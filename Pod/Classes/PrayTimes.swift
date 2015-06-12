@@ -164,7 +164,7 @@ public class PrayTimes {
         private var timeSuffixes = ["am", "pm"]
         private var invalidTime =  "-----"
         
-        init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil) {
+        public init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil) {
             self.time = time
             self.type = type
             self.name = type.getName()
