@@ -32,4 +32,4 @@ http://zamzam.io
 
 ## License
 
-SwiftPrayTimes is available under the GNU LGPL v3.0 license. See the LICENSE file for more info.
+SwiftPrayTimes is available under the MIT license. See the LICENSE file for more info.

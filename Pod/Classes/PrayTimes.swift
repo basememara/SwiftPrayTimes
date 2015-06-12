@@ -6,7 +6,7 @@ Copyright (C) 2007-2011 PrayTimes.org
 
 Original Developer (JavaScript): Hamid Zarrabi-Zadeh
 Translator Developer (Swift): Basem Emara
-License: GNU LGPL v3.0
+License: MIT
 
 TERMS OF USE:
 Permission is granted to use this code, with or
