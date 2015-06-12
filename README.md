@@ -13,6 +13,8 @@ Pray Times is an Islamic project aimed at providing an open-source library for c
 The first version of Pray Times was released in early 2007. The code is currently used in a wide range of 
 Islamic websites and applications.
 
+SwiftPrayTimes is being used in the iPhone and Apple Watch called [Pray Watch](http://appstore.com/praywatch). It can be downloaded here to see it in action: http://appstore.com/praywatch
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
