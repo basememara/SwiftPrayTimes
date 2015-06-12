@@ -28,7 +28,7 @@ pod "SwiftPrayTimes"
 
 ## Author
 
-Basem Emara, basememara@gmail.com
+http://zamzam.io
 
 ## License
 
