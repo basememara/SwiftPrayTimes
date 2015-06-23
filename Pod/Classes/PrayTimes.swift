@@ -102,7 +102,7 @@ public class PrayTimes {
         ]
         
         // http://natashatherobot.com/swift-enums-tableviews/
-        func getName() -> String {
+        public func getName() -> String {
             if let name = TimeName.names[self] {
                 return name
             } else {
