@@ -450,7 +450,7 @@ public class PrayTimes {
         dst: Bool = false,
         dstOffset: Int = 3600,
         format: String? = nil,
-        //isLocalCoords: Bool = true, // TODO: See notes below
+        isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         completion: (times: [TimeName: PrayerResult]) -> Void) -> Void {
             lat = coords[0]
             lng = coords[1]
@@ -480,15 +480,11 @@ public class PrayTimes {
                 }
                 
                 deferredTask()
-            /*
             } else if isLocalCoords {
                 // Get local time zone of device
-                timeZone = Double(NSTimeZone.localTimeZone().secondsFromGMT) / 60.0 / 60.0
+                self.timeZone = Double(NSTimeZone.localTimeZone().secondsFromGMT) / 60.0 / 60.0
                 
-                // Factor in daylight if applicable
-                // TODO: Swift handles this wrong it seems, use Google web service below in the meantime
-                self.timeZone += (NSTimeZone.localTimeZone().daylightSavingTimeOffset / 60.0 / 60.0)
-            */
+                deferredTask()
             } else {
                 // If no timezone given or coords are not local, we can retrive automatically from remote web service
                 let url = "https://maps.googleapis.com/maps/api/timezone/json?location=\(lat),\(lng)&timestamp=\(date.timeIntervalSince1970)"
