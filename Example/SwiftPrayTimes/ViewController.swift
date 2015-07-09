@@ -27,7 +27,7 @@ class ViewController: UITableViewController {
         activityIndicator.startAnimating()
         
         // Retrieve prayer times
-        prayTimes.getTimes([24.6700, 46.6900], isLocalCoords: false, completion: {
+        prayTimes.getTimes([37.323, -122.0527], timezone: -8, dst: true, completion: {
             (times: [PrayTimes.TimeName: PrayTimes.PrayerResult]) in
             
             // Pluck only times array and sort by time
