@@ -252,6 +252,13 @@ public class PrayTimes {
             var roundedTime = fixHour(time + 0.5 / 60) // Add 0.5 minutes to round
             var hours = floor(roundedTime)
             var minutes = round((roundedTime - hours) * 60.0)
+            
+            // Handle scenario when minutes is rounded to 60
+            if minutes > 59 {
+                hours++
+                minutes = 0
+            }
+            
             var suffix = format == "12h" && suffixes!.count > 0 ? (hours < 12 ? suffixes![0] : suffixes![1]) : ""
             var hour = format == "24h" ? twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
             
