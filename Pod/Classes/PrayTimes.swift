@@ -281,6 +281,16 @@ public class PrayTimes {
         }
     }
     
+    public class PrayerResultSeries: NSObject {
+        public var date: NSDate
+        public var times: [PrayerResult]
+        
+        public init(date: NSDate, times: [PrayerResult]) {
+            self.date = date
+            self.times = times
+        }
+    }
+    
     //------------------------ Constants --------------------------
     
     // Calculation Methods
@@ -524,6 +534,63 @@ public class PrayTimes {
             }
     }
     
+    public func getTimesForRange(
+        coords: [Double],
+        endDate: NSDate,
+        date: NSDate = NSDate(),
+        timezone: Double? = nil,
+        dst: Bool = false,
+        dstOffset: Int = 3600,
+        format: String? = nil,
+        isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
+        completion: (series: [PrayerResultSeries]) -> Void) -> Void {
+            
+            // Initialize variables
+            var series: [PrayerResultSeries]! = []
+            var startDate = NSCalendar.currentCalendar()
+                .dateByAddingUnit(.CalendarUnitDay,
+                    value: -1,
+                    toDate: date,
+                    options: NSCalendarOptions(0)
+                )!
+            
+            // Iterate date range to generate prayer times per day
+            while startDate.compare(endDate) == .OrderedAscending {
+                startDate = NSCalendar.currentCalendar()
+                    .dateByAddingUnit(.CalendarUnitDay,
+                        value: 1,
+                        toDate: startDate,
+                        options: NSCalendarOptions(0)
+                    )!
+                
+                // Retrieve prayer times for day
+                getTimes(coords,
+                    date: startDate,
+                    timezone: timezone,
+                    dst: dst,
+                    dstOffset: dstOffset,
+                    format: format,
+                    isLocalCoords: isLocalCoords,
+                    completion: {
+                    (times: [TimeName: PrayerResult]) in
+                    
+                    // Pluck only times array and sort by time
+                    let sortedTimes = times.values.array.sorted {
+                        $0.time < $1.time
+                    }
+                    
+                    series.append(PrayerResultSeries(date: startDate, times: sortedTimes))
+                    
+                    // Populate table again
+                    if NSCalendar.currentCalendar().startOfDayForDate(startDate)
+                        .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
+                            // Process callback
+                            completion(series: series)
+                    }
+                })
+            }
+    }
+    
     //---------------------- Compute Prayer Times -----------------------
     
     
@@ -678,13 +745,13 @@ public class PrayTimes {
         let maghrib = getSetting(TimeName.Maghrib)
         if (maghrib.type == AdjustmentType.Minute) {
             times[TimeName.Maghrib] = times[TimeName.Sunset]!
-                - (maghrib.value as! Double) / 60.0
+                + (maghrib.value as! Double) / 60.0
         }
         
         let isha = getSetting(TimeName.Isha)
         if (isha.type == AdjustmentType.Minute) {
             times[TimeName.Isha] = times[TimeName.Maghrib]!
-                - (isha.value as! Double) / 60.0
+                + (isha.value as! Double) / 60.0
         }
         
         times[TimeName.Dhuhr] = times[TimeName.Dhuhr]!
@@ -730,7 +797,7 @@ public class PrayTimes {
             ? timeDiff(time, base)
             : timeDiff(base, time)
         
-        if (diff > portion) {
+        if (time.isNaN || diff > portion) {
             time = base + (direction == "ccw" ? -portion : portion)
         }
         

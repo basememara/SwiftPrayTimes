@@ -13,6 +13,12 @@ class ViewController: UITableViewController {
     
     var prayTimesData: [PrayTimes.PrayerResult]?
     
+    let method = "ISNA"
+    let juristic = "Standard"
+    let coords = [37.323, -122.0527]
+    let timezone = -8.0
+    let dst = true
+    
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -20,14 +26,14 @@ class ViewController: UITableViewController {
         
         // Create instance
         var prayTimes = PrayTimes(
-            method: "ISNA",
-            juristic: PrayTimes.AdjustmentMethod(rawValue: "Standard")
+            method: method,
+            juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
         
         activityIndicator.startAnimating()
         
         // Retrieve prayer times
-        prayTimes.getTimes([37.323, -122.0527], timezone: -8, dst: true, completion: {
+        prayTimes.getTimes(coords, timezone: timezone, dst: dst, completion: {
             (times: [PrayTimes.TimeName: PrayTimes.PrayerResult]) in
             
             // Pluck only times array and sort by time
