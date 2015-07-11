@@ -164,7 +164,7 @@ public class PrayTimes {
         private var timeSuffixes = ["am", "pm"]
         private var invalidTime =  "-----"
         
-        public init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil) {
+        public init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil, var ofDate: NSDate = NSDate()) {
             self.time = time
             self.type = type
             self.name = type.getName()
@@ -215,7 +215,6 @@ public class PrayTimes {
             }
             
             // Handle times after midnight
-            var ofDate = NSDate()
             if self.time > 24 {
                 // Increment day
                 ofDate = NSCalendar.currentCalendar()
@@ -480,7 +479,9 @@ public class PrayTimes {
                 var result = [TimeName: PrayerResult]()
                 for (key, value) in self.computeTimes() {
                     result[key] = PrayerResult(key, value,
-                        timeFormat: self.timeFormat, timeSuffixes: self.timeSuffixes)
+                        timeFormat: self.timeFormat,
+                        timeSuffixes: self.timeSuffixes,
+                        ofDate: date)
                 }
                 
                 // Process callback
