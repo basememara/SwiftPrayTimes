@@ -177,6 +177,26 @@ public class PrayTimes {
                 self.timeSuffixes = value
             }
             
+            // Handle times after midnight
+            if self.time > 24 {
+                // Increment day
+                ofDate = NSCalendar.currentCalendar()
+                    .dateByAddingUnit(.CalendarUnitDay,
+                        value: 1,
+                        toDate: ofDate,
+                        options: NSCalendarOptions(0)
+                    )!
+            }
+            
+            // Convert time to full date
+            self.date = NSCalendar.currentCalendar()
+                .dateBySettingHour(Int(self.time < 24 ? self.time : (self.time - 24)),
+                    minute: Int((self.time - Double(Int(self.time))) * 60),
+                    second: 0,
+                    ofDate: ofDate,
+                    options: nil
+                )!
+            
             // Handle specific prayers
             switch (type) {
             case TimeName.Fajr:
@@ -213,26 +233,6 @@ public class PrayTimes {
                 break;
             default: break;
             }
-            
-            // Handle times after midnight
-            if self.time > 24 {
-                // Increment day
-                ofDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.CalendarUnitDay,
-                        value: 1,
-                        toDate: ofDate,
-                        options: NSCalendarOptions(0)
-                    )!
-            }
-            
-            // Convert time to full date
-            self.date = NSCalendar.currentCalendar()
-                .dateBySettingHour(Int(self.time < 24 ? self.time : (self.time - 24)),
-                    minute: Int((self.time - Double(Int(self.time))) * 60),
-                    second: 0,
-                    ofDate: ofDate,
-                    options: nil
-                )!
         }
         
         // Convert float time to the given format (see timeFormats)
