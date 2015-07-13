@@ -544,10 +544,10 @@ public class PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completion: (series: [PrayerResultSeries]) -> Void) -> Void {
+        completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void,
+        completion: () -> Void) -> Void {
             
             // Initialize variables
-            var series: [PrayerResultSeries]! = []
             var startDate = NSCalendar.currentCalendar()
                 .dateByAddingUnit(.CalendarUnitDay,
                     value: -1,
@@ -574,20 +574,20 @@ public class PrayTimes {
                     isLocalCoords: isLocalCoords,
                     completion: {
                     (times: [TimeName: PrayerResult]) in
+                        // Pluck only times array and sort by time
+                        let sortedTimes = times.values.array.sorted {
+                            $0.time < $1.time
+                        }
                     
-                    // Pluck only times array and sort by time
-                    let sortedTimes = times.values.array.sorted {
-                        $0.time < $1.time
-                    }
-                    
-                    series.append(PrayerResultSeries(date: startDate, times: sortedTimes))
-                    
-                    // Populate table again
-                    if NSCalendar.currentCalendar().startOfDayForDate(startDate)
-                        .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
-                            // Process callback
-                            completion(series: series)
-                    }
+                        // Process callback
+                        completionPerDate(date: startDate, times: sortedTimes)
+                        
+                        // Allow caller to perform action when done
+                        if NSCalendar.currentCalendar().startOfDayForDate(startDate)
+                            .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
+                                // Process callback
+                                completion()
+                        }
                 })
             }
     }
