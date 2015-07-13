@@ -36,12 +36,10 @@ class MonthlyController: UITableViewController {
         
         // Get prayer times for date range and reload table
         prayTimes.getTimesForRange(coords, endDate: endDate, timezone: timezone, dst: dst,
-            completionPerDate: { (date, times) in
-                self.prayTimeSeries.append(PrayTimes.PrayerResultSeries(date: date, times: times))
-            },
-            completion: { (series) in
-                self.tableView.reloadData()
-        })
+            completion: { (series) in self.tableView.reloadData() }) {
+                (date, times) in
+                    self.prayTimeSeries.append(PrayTimes.PrayerResultSeries(date: date, times: times))
+            }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

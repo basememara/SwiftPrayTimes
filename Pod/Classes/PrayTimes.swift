@@ -544,9 +544,9 @@ public class PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void,
-        completion: () -> Void) -> Void {
-            
+        completion: (() -> Void)? = nil,
+        completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void) -> Void {
+    
             // Initialize variables
             var startDate = NSCalendar.currentCalendar()
                 .dateByAddingUnit(.CalendarUnitDay,
@@ -586,7 +586,9 @@ public class PrayTimes {
                         if NSCalendar.currentCalendar().startOfDayForDate(startDate)
                             .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
                                 // Process callback
-                                completion()
+                                if let callback = completion {
+                                    callback()
+                                }
                         }
                 })
             }
