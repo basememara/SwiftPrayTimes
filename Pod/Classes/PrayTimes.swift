@@ -189,9 +189,10 @@ public class PrayTimes {
             }
             
             // Convert time to full date
+            let timeComponents = PrayerResult.getTimeComponents(self.time)
             self.date = NSCalendar.currentCalendar()
-                .dateBySettingHour(Int(self.time < 24 ? self.time : (self.time - 24)),
-                    minute: Int((self.time - Double(Int(self.time))) * 60),
+                .dateBySettingHour(timeComponents[0],
+                    minute: timeComponents[1],
                     second: 0,
                     ofDate: ofDate,
                     options: nil
@@ -248,7 +249,33 @@ public class PrayTimes {
                 return "\(time)"
             }
             
-            var roundedTime = fixHour(time + 0.5 / 60) // Add 0.5 minutes to round
+            let timeComponents = PrayerResult.getTimeComponents(time)
+            let hours = timeComponents[0]
+            let minutes = timeComponents[1]
+            
+            let suffix = format == "12h" && suffixes!.count > 0 ? (hours < 12 ? suffixes![0] : suffixes![1]) : ""
+            let hour = format == "24h" ? PrayerResult.twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
+            
+            let output = hour + ":" + PrayerResult.twoDigitsFormat(minutes)
+                + (suffix != "" ? " " + suffix : "")
+            
+            return output
+        }
+        
+        // Add a leading 0 if necessary
+        static func twoDigitsFormat(num: Int!) -> String {
+            return num < 10 ? "0\(num)" : "\(num)"
+        }
+        
+        static func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
+        
+        static func fix(a: Double, _ b: Double) -> Double {
+            let a = a - b * (floor(a / b))
+            return a < 0 ? a + b : a
+        }
+        
+        static func getTimeComponents(time: Double) -> [Int] {
+            let roundedTime = fixHour(time + 0.5 / 60) // Add 0.5 minutes to round
             var hours = floor(roundedTime)
             var minutes = round((roundedTime - hours) * 60.0)
             
@@ -258,25 +285,7 @@ public class PrayTimes {
                 minutes = 0
             }
             
-            var suffix = format == "12h" && suffixes!.count > 0 ? (hours < 12 ? suffixes![0] : suffixes![1]) : ""
-            var hour = format == "24h" ? twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
-            
-            var output = hour + ":" + twoDigitsFormat(minutes)
-                + (suffix != "" ? " " + suffix : "")
-            
-            return output
-        }
-        
-        // Add a leading 0 if necessary
-        func twoDigitsFormat(num: Double!) -> String {
-            return num < 10 ? "0\(Int(num))" : "\(Int(num))"
-        }
-        
-        func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
-        
-        func fix(a: Double, _ b: Double) -> Double {
-            let a = a - b * (floor(a / b))
-            return a < 0 ? a + b : a
+            return [Int(hours), Int(minutes)]
         }
     }
     
