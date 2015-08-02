@@ -189,7 +189,28 @@ public class PrayTimes {
             }
             
             // Convert time to full date
-            let timeComponents = PrayerResult.getTimeComponents(self.time)
+            var timeComponents = PrayerResult.getTimeComponents(self.time)
+            
+            // Check if minutes spills to next hour
+            if timeComponents[1] >= 60 {
+                // Increment hour
+                timeComponents[0] += 1
+                timeComponents[1] -= 60
+            }
+            
+            // Check if hour spills to next day
+            if timeComponents[0] >= 24 {
+                // Increment day
+                ofDate = NSCalendar.currentCalendar()
+                    .dateByAddingUnit(.CalendarUnitDay,
+                        value: 1,
+                        toDate: ofDate,
+                        options: NSCalendarOptions(0)
+                    )!
+                
+                timeComponents[0] -= 24
+            }
+            
             self.date = NSCalendar.currentCalendar()
                 .dateBySettingHour(timeComponents[0],
                     minute: timeComponents[1],
@@ -525,7 +546,7 @@ public class PrayTimes {
                             options: NSJSONReadingOptions.MutableContainers,
                             error: &err) as! NSDictionary
                         
-                        if (err == nil) {
+                        if (err == nil && (jsonData["status"] as? String) == "OK") {
                             self.timeZone = jsonData["rawOffset"] as! Double / 60.0 / 60.0
                             
                             // Factor in daylight if applicable
