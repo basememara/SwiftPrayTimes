@@ -19,17 +19,17 @@ class MonthlyController: UITableViewController {
     let timezone = -8.0
     let dst = true
     let endDate = NSCalendar.currentCalendar()
-        .dateByAddingUnit(.CalendarUnitMonth,
+        .dateByAddingUnit(.Month,
             value: 1,
             toDate: NSDate(),
-            options: NSCalendarOptions(0)
+            options: NSCalendarOptions(rawValue: 0)
         )!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Create instance
-        var prayTimes = PrayTimes(
+        let prayTimes = PrayTimes(
             method: method,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
@@ -55,7 +55,7 @@ class MonthlyController: UITableViewController {
         formatter.dateFormat = "MMMM dd, yyyy"
         
         for item in data.times.filter({ $0.isFard || $0.type == PrayTimes.TimeName.Sunrise }) {
-            let name = Array(item.abbr)[0]
+            let name = Array(item.abbr.characters)[0]
             let time = item.formattedTime.componentsSeparatedByString(" ")[0]
             
             output += "(\(name)) \(time) "

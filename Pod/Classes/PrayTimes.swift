@@ -143,7 +143,7 @@ public class PrayTimes {
             
             // Add default params if applicable
             for item in PrayTimes.defaultParams {
-                if !contains(self.params, { $0.time == item.time }) {
+                if !self.params.contains({ $0.time == item.time }) {
                     self.params.append(item)
                 }
             }
@@ -181,10 +181,10 @@ public class PrayTimes {
             if self.time > 24 {
                 // Increment day
                 ofDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.CalendarUnitDay,
+                    .dateByAddingUnit(.Day,
                         value: 1,
                         toDate: ofDate,
-                        options: NSCalendarOptions(0)
+                        options: NSCalendarOptions(rawValue: 0)
                     )!
             }
             
@@ -202,10 +202,10 @@ public class PrayTimes {
             if timeComponents[0] >= 24 {
                 // Increment day
                 ofDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.CalendarUnitDay,
+                    .dateByAddingUnit(.Day,
                         value: 1,
                         toDate: ofDate,
-                        options: NSCalendarOptions(0)
+                        options: NSCalendarOptions(rawValue: 0)
                     )!
                 
                 timeComponents[0] -= 24
@@ -216,7 +216,7 @@ public class PrayTimes {
                     minute: timeComponents[1],
                     second: 0,
                     ofDate: ofDate,
-                    options: nil
+                    options: []
                 )!
             
             // Handle specific prayers
@@ -234,7 +234,7 @@ public class PrayTimes {
                 
                 // Handle Friday prayer
                 let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-                let flags = NSCalendarUnit.CalendarUnitWeekday
+                let flags = NSCalendarUnit.Weekday
                 let components = calendar?.components(flags, fromDate: date)
                 if components?.weekday == 6 {
                     self.name = "Jumuah"
@@ -426,7 +426,7 @@ public class PrayTimes {
         // Update juristic method if applicable
         if let j = juristic {
             //for item in settings {
-            for (index, item) in enumerate(settings) {
+            for (index, item) in settings.enumerate() {
                 if item.type == .Method {
                     settings[index].value = j
                 }
@@ -541,10 +541,9 @@ public class PrayTimes {
                     (data, response, error) in
                     
                     if (error == nil) {
-                        var err: NSError?
-                        var jsonData = NSJSONSerialization.JSONObjectWithData(data,
-                            options: NSJSONReadingOptions.MutableContainers,
-                            error: &err) as! NSDictionary
+                        let err: NSError? = nil
+                        let jsonData = (try! NSJSONSerialization.JSONObjectWithData(data!,
+                            options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
                         
                         if (err == nil && (jsonData["status"] as? String) == "OK") {
                             self.timeZone = jsonData["rawOffset"] as! Double / 60.0 / 60.0
@@ -556,10 +555,10 @@ public class PrayTimes {
                             
                             deferredTask()
                         } else {
-                            println("JSON Error \(err!.localizedDescription)")
+                            print("JSON Error")
                         }
                     } else {
-                        println(error.localizedDescription)
+                        print(error!.localizedDescription)
                     }
                     }.resume()
             }
@@ -579,19 +578,19 @@ public class PrayTimes {
     
             // Initialize variables
             var startDate = NSCalendar.currentCalendar()
-                .dateByAddingUnit(.CalendarUnitDay,
+                .dateByAddingUnit(.Day,
                     value: -1,
                     toDate: date,
-                    options: NSCalendarOptions(0)
+                    options: NSCalendarOptions(rawValue: 0)
                 )!
             
             // Iterate date range to generate prayer times per day
             while startDate.compare(endDate) == .OrderedAscending {
                 startDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.CalendarUnitDay,
+                    .dateByAddingUnit(.Day,
                         value: 1,
                         toDate: startDate,
-                        options: NSCalendarOptions(0)
+                        options: NSCalendarOptions(rawValue: 0)
                     )!
                 
                 // Retrieve prayer times for day
@@ -605,7 +604,7 @@ public class PrayTimes {
                     completion: {
                     (times: [TimeName: PrayerResult]) in
                         // Pluck only times array and sort by time
-                        let sortedTimes = times.values.array.sorted {
+                        let sortedTimes = Array(times.values).sort {
                             $0.time < $1.time
                         }
                     
@@ -634,7 +633,7 @@ public class PrayTimes {
         times = adjustTimes(times)
         
         // Add midnight time
-        var midnight = getSetting(TimeName.Midnight);
+        let midnight = getSetting(TimeName.Midnight);
         times[TimeName.Midnight] = midnight.type == AdjustmentType.Method
             && (midnight.value as! AdjustmentMethod) == AdjustmentMethod.Jafari
             ? times[TimeName.Sunset]! + timeDiff(times[TimeName.Sunset], times[TimeName.Fajr]) / 2
@@ -649,29 +648,29 @@ public class PrayTimes {
     public func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         times = dayPortion(times)
         
-        var imsak = sunAngleTime(getSettingValue(TimeName.Imsak),
+        let imsak = sunAngleTime(getSettingValue(TimeName.Imsak),
             time: times[TimeName.Imsak],
             direction: "ccw")
         
-        var fajr = sunAngleTime(getSettingValue(TimeName.Fajr),
+        let fajr = sunAngleTime(getSettingValue(TimeName.Fajr),
             time: times[TimeName.Fajr],
             direction: "ccw")
         
-        var sunrise = sunAngleTime(riseSetAngle(),
+        let sunrise = sunAngleTime(riseSetAngle(),
             time: times[TimeName.Sunrise],
             direction: "ccw")
         
-        var dhuhr = midDay(times[TimeName.Dhuhr])
+        let dhuhr = midDay(times[TimeName.Dhuhr])
         
-        var asr = asrTime(times[TimeName.Asr])
+        let asr = asrTime(times[TimeName.Asr])
         
-        var sunset = sunAngleTime(riseSetAngle(),
+        let sunset = sunAngleTime(riseSetAngle(),
             time: times[TimeName.Sunset])
         
-        var maghrib = sunAngleTime(getSettingValue(TimeName.Maghrib),
+        let maghrib = sunAngleTime(getSettingValue(TimeName.Maghrib),
             time: times[TimeName.Maghrib])
         
-        var isha = sunAngleTime(getSettingValue(TimeName.Isha),
+        let isha = sunAngleTime(getSettingValue(TimeName.Isha),
             time: times[TimeName.Isha])
         
         return [
@@ -691,17 +690,17 @@ public class PrayTimes {
     
     // Compute mid-day time
     public func midDay(time: Double!) -> Double {
-        var eqt = sunPosition(jDate + time)["equation"]!
-        var noon = fixHour(12.0 - eqt)
+        let eqt = sunPosition(jDate + time)["equation"]!
+        let noon = fixHour(12.0 - eqt)
         return noon
     }
     
     // Compute the time at which sun reaches a specific angle below horizon
     public func sunAngleTime(angle: Double!, time: Double!, direction: String? = nil) -> Double {
-        var decl = sunPosition(jDate + time)["declination"]!
-        var noon = midDay(time)
+        let decl = sunPosition(jDate + time)["declination"]!
+        let noon = midDay(time)
         
-        var t = 1 / 15 * self.arccos(
+        let t = 1 / 15 * self.arccos(
             (-self.sin(angle) - self.sin(decl) * self.sin(lat))
                 / (self.cos(decl) * self.cos(lat)))
         
@@ -711,17 +710,15 @@ public class PrayTimes {
     // Compute declination angle of sun and equation of time
     // Ref: http://aa.usno.navy.mil/faq/docs/SunApprox.php
     public func sunPosition(jd: Double) -> [String: Double] {
-        var D = jd - 2451545.0
-        var g = fixAngle(357.529 + 0.98560028 * D)
-        var q = fixAngle(280.459 + 0.98564736 * D)
-        var L = fixAngle(q + 1.915 * self.sin(g) + 0.020 * self.sin(2 * g))
+        let D = jd - 2451545.0
+        let g = fixAngle(357.529 + 0.98560028 * D)
+        let q = fixAngle(280.459 + 0.98564736 * D)
+        let L = fixAngle(q + 1.915 * self.sin(g) + 0.020 * self.sin(2 * g))
+        let e = 23.439 - 0.00000036 * D
         
-        var R = 1.00014 - 0.01671 * self.cos(g) - 0.00014 * self.cos(2 * g)
-        var e = 23.439 - 0.00000036 * D
-        
-        var RA = self.arctan2(self.cos(e) * self.sin(L), self.cos(L)) / 15.0
-        var eqt = q / 15.0 - fixHour(RA)
-        var decl = self.arcsin(self.sin(e) * self.sin(L))
+        let RA = self.arctan2(self.cos(e) * self.sin(L), self.cos(L)) / 15.0
+        let eqt = q / 15.0 - fixHour(RA)
+        let decl = self.arcsin(self.sin(e) * self.sin(L))
         
         return [
             "declination": decl,
@@ -733,14 +730,14 @@ public class PrayTimes {
     public func riseSetAngle() -> Double {
         //var earthRad = 6371009; // in meters
         //var angle = DMath.arccos(earthRad/(earthRad+ elv));
-        var angle = 0.0347 * sqrt(elv) // an approximation
+        let angle = 0.0347 * sqrt(elv) // an approximation
         return 0.833 + angle
     }
     
     // Convert Gregorian date to Julian day
     // Ref: Astronomical Algorithms by Jean Meeus
     public func getJulian(date: NSDate) -> Double {
-        let flags: NSCalendarUnit = .CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear
+        let flags: NSCalendarUnit = [.Day, .Month, .Year]
         let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
         
         if components.month <= 2 {
@@ -748,14 +745,15 @@ public class PrayTimes {
             components.month += 12
         }
         
-        var A = floor(Double(components.year) / Double(100));
-        var B = 2 - A + floor(A / Double(4));
+        let A = floor(Double(components.year) / Double(100));
+        let B = 2 - A + floor(A / Double(4));
+        let C = floor(Double(365.25) * Double(components.year + 4716))
+        let D = floor(Double(30.6001) * Double(components.month + 1))
+        let E = Double(components.day) + B - 1524.5
         
-        var JD = floor(Double(365.25) * Double(components.year + 4716))
-            + floor(Double(30.6001) * Double(components.month + 1))
-            + Double(components.day) + B - 1524.5
+        let JD = C + D + E
         
-        return JD;
+        return JD
     }
     
     // Adjust times
@@ -795,7 +793,7 @@ public class PrayTimes {
     
     // Adjust times for locations in higher latitudes
     public func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
-        var nightTime = timeDiff(times[TimeName.Sunset], times[TimeName.Sunrise])
+        let nightTime = timeDiff(times[TimeName.Sunset], times[TimeName.Sunrise])
         
         times[TimeName.Imsak] = adjustHLTime(times[TimeName.Imsak],
             base: times[TimeName.Sunrise],
@@ -824,9 +822,9 @@ public class PrayTimes {
     
     // Adjust times for locations in higher latitudes
     public func adjustHLTime(var time: Double!, base: Double!, angle: Double!, night: Double!, direction: String? = nil) -> Double {
-        var portion = nightPortion(angle, night)
+        let portion = nightPortion(angle, night)
         
-        var diff = direction == "ccw"
+        let diff = direction == "ccw"
             ? timeDiff(time, base)
             : timeDiff(base, time)
         
@@ -874,8 +872,8 @@ public class PrayTimes {
     public func asrTime(time: Double!) -> Double {
         let param = getSetting(TimeName.Asr)
         let factor = asrFactor(param)
-        var decl = sunPosition(jDate + time)["declination"]!
-        var angle = -self.arccot(factor + self.tan(abs(lat - decl)))
+        let decl = sunPosition(jDate + time)["declination"]!
+        let angle = -self.arccot(factor + self.tan(abs(lat - decl)))
         return sunAngleTime(angle, time: time)
     }
     

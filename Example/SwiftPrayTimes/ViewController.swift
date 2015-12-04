@@ -25,7 +25,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         // Create instance
-        var prayTimes = PrayTimes(
+        let prayTimes = PrayTimes(
             method: method,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
             (times: [PrayTimes.TimeName: PrayTimes.PrayerResult]) in
             
             // Pluck only times array and sort by time
-            self.prayTimesData = times.values.array.sorted {
+            self.prayTimesData = Array(times.values).sort {
                 $0.time < $1.time
             }
             
