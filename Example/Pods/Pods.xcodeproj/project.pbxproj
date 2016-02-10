@@ -7,499 +7,380 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02ECFA4B35A31F96B6B2C220 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0880AEC4D612C8A265916FC2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0681A91C2614E59BE7A24260 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C830A1F0EEF13EE9A64A0 /* PrayTimes.swift */; };
-		0E1613A88410827C6D7F31BC /* Pods-SwiftPrayTimes_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6292D36AB0E290E972BA97E /* Pods-SwiftPrayTimes_Example-dummy.m */; };
-		125BBFB85A019E004C2F81E8 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3200BBB5FC67D121A3405AB6 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m */; };
-		14A424C88281C7A185A9878C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1715A0E4286F1A09262FB748 /* Foundation.framework */; };
-		2973431643B7821158670414 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7743E96ACD3F8CFF9D6A23 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m */; };
-		434C7EB2F5D107D66CD34EFC /* Pods-SwiftPrayTimes_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 602C9B7B89AB66B46CA52E3D /* Pods-SwiftPrayTimes_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48BC30E9D1B2977871F20D7C /* Pods-SwiftPrayTimes_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D427E0B2CEA4B9BBBAA0C /* Pods-SwiftPrayTimes_Tests-dummy.m */; };
-		50BFAB764F4989E1E14DF47E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1715A0E4286F1A09262FB748 /* Foundation.framework */; };
-		7620FEC282BAA2B7CDDD84B7 /* Pods-SwiftPrayTimes_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 47E6C6FA638C77178CE991FD /* Pods-SwiftPrayTimes_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		826024B4752200AA37A70516 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1715A0E4286F1A09262FB748 /* Foundation.framework */; };
-		85682DA314282AAB021C42A4 /* SwiftPrayTimes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 17FEE831EF221AA1D9121008 /* SwiftPrayTimes.bundle */; };
-		85BFCB4AB668503CD0DD8D2C /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66BEEFF7463BDC81BC984EF3 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E8FB3B1D7ADD64DC95C0C0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1715A0E4286F1A09262FB748 /* Foundation.framework */; };
-		D2F53B986819BA2E831C2E1C /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C830A1F0EEF13EE9A64A0 /* PrayTimes.swift */; };
-		DCBA9251676523C5939F0E09 /* SwiftPrayTimes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C2B0E0561E7F8F6981B0A04 /* SwiftPrayTimes.bundle */; };
+		014EF11192B01ED079FAFFAF10FD40C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		0EB1BAEE2FC0D8E5A4D052AA7433BA8F /* Pods-SwiftPrayTimes_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E75251CAF7732E3F5111841BB45768B8 /* Pods-SwiftPrayTimes_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		204FE70634C4C5EDBE6968F733983599 /* Pods-SwiftPrayTimes_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C25640A0940ED7EFB0F4164B5B0EECE1 /* Pods-SwiftPrayTimes_Example-dummy.m */; };
+		270D7BCE1DC9C8BE51CD996070F3F46C /* SwiftPrayTimes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 888A2DEF595ABC169B8AE71681FA9716 /* SwiftPrayTimes.bundle */; };
+		4C8B362F031B8283AF5F6DC18E6EE8DF /* Pods-SwiftPrayTimes_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8BB3D501D81A2C7502A39CD0D7411 /* Pods-SwiftPrayTimes_Tests-dummy.m */; };
+		60C8591BA592DDAF287C9C7B2EB17448 /* Pods-SwiftPrayTimes_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 220BEBDB785A3A83A5942878A9C0650B /* Pods-SwiftPrayTimes_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E806F9294E83850969AE7DAAD649191 /* SwiftPrayTimes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B7EA0C25DFCED7F72793D7D7049CC6F /* SwiftPrayTimes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD871F4756B07CC70B171EFE1F6FEE6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		B694C9802519729EA52277BB618437CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */; };
+		C839BB44B673ED03E02EAC15CF756959 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863113F43947D53E2E6A15954C6F7F57 /* PrayTimes.swift */; };
+		FE5A382CD95DF0772C54F4E91F93803F /* SwiftPrayTimes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 201381C86D1ECF6067D415A2E2D0F0FA /* SwiftPrayTimes-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2ECA1DA5C17DAB5139E59268 /* PBXContainerItemProxy */ = {
+		1B42FE09953ECC8517826462FCBFA7CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 461331C9CC0D5D940F2A6212 /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BD5BFE4F9D661EB911F988E7;
-			remoteInfo = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes";
+			remoteGlobalIDString = 75003B064CDD993576330D7EA62D8508;
+			remoteInfo = SwiftPrayTimes;
 		};
-		534ED95FF3846596CA107C73 /* PBXContainerItemProxy */ = {
+		EB02D3E3321F306949396747D2D9680B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 461331C9CC0D5D940F2A6212 /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 240DAF81653F3B919594A9C2;
-			remoteInfo = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes";
-		};
-		709E9AAB73A64B0183DCB422 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 461331C9CC0D5D940F2A6212 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5CD2B61E2966A094D31D709A;
-			remoteInfo = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes";
-		};
-		BC3DA4E06007CFEE27721717 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 461331C9CC0D5D940F2A6212 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F1DB3239AF8324B83D97CE10;
-			remoteInfo = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes";
+			remoteGlobalIDString = 73FAE3317D5AFCCDC43B5530F2337B54;
+			remoteInfo = "SwiftPrayTimes-SwiftPrayTimes";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0880AEC4D612C8A265916FC2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h"; sourceTree = "<group>"; };
-		1715A0E4286F1A09262FB748 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		179D9A94F8CC7AD0B5024402 /* Pods-SwiftPrayTimes_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftPrayTimes_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		17FEE831EF221AA1D9121008 /* SwiftPrayTimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPrayTimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		3114CAFAACE1A676B282B8FA /* Pods-SwiftPrayTimes_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3200BBB5FC67D121A3405AB6 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m"; sourceTree = "<group>"; };
-		348E4E962AEB9B731AE25BD9 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		34DFC70203CEB362540722F8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36B817070EDCA13336394990 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.xcconfig"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.xcconfig"; sourceTree = "<group>"; };
-		3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig"; sourceTree = "<group>"; };
-		402CFF9F45763936A2D0DA4B /* Pods-SwiftPrayTimes_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftPrayTimes_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		47E6C6FA638C77178CE991FD /* Pods-SwiftPrayTimes_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Example-umbrella.h"; sourceTree = "<group>"; };
-		4C2C830A1F0EEF13EE9A64A0 /* PrayTimes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrayTimes.swift; sourceTree = "<group>"; };
-		4E5C0DD22CC843498896BAD9 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		602C9B7B89AB66B46CA52E3D /* Pods-SwiftPrayTimes_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Tests-umbrella.h"; sourceTree = "<group>"; };
-		615854201FFA80D58D6E5E1D /* Pods_SwiftPrayTimes_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftPrayTimes_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63C529F79601564E17229CE8 /* Pods-SwiftPrayTimes_Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Tests-environment.h"; sourceTree = "<group>"; };
-		6591A3350B61B8F70EC22E44 /* Pods-SwiftPrayTimes_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Example-resources.sh"; sourceTree = "<group>"; };
-		65C52FF3C0E424FD299C0667 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes.modulemap"; sourceTree = "<group>"; };
-		668D9503375906877ECC8DB8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66BEEFF7463BDC81BC984EF3 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h"; sourceTree = "<group>"; };
-		82AB71A6E701DD73AED7955A /* Pods-SwiftPrayTimes_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftPrayTimes_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		87B820868EF4B5DF46B640AC /* Pods-SwiftPrayTimes_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftPrayTimes_Tests.modulemap"; sourceTree = "<group>"; };
-		88596067F527D92502C059B9 /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D7D9248ABD812C9D5D21CF8 /* Pods-SwiftPrayTimes_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftPrayTimes_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		97625C19354C41324A9CD7B3 /* Pods-SwiftPrayTimes_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Example-frameworks.sh"; sourceTree = "<group>"; };
-		9C2B0E0561E7F8F6981B0A04 /* SwiftPrayTimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPrayTimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2458D3DA85551BD650F982A /* SwiftPrayTimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPrayTimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3358E49B7B6782E4E6BA2CE /* Pods-SwiftPrayTimes_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftPrayTimes_Example.modulemap"; sourceTree = "<group>"; };
-		A509AFCC97E3B46DA70EF2F0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6292D36AB0E290E972BA97E /* Pods-SwiftPrayTimes_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftPrayTimes_Example-dummy.m"; sourceTree = "<group>"; };
-		B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig"; sourceTree = "<group>"; };
-		B8DD665EE3AE50F4CCD99831 /* Pods-SwiftPrayTimes_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Tests-resources.sh"; sourceTree = "<group>"; };
-		B8E2D0CDEB1C86BA41472D37 /* Pods-SwiftPrayTimes_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BBF2A948278C79F565447D30 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-prefix.pch"; sourceTree = "<group>"; };
-		C0028B6AFAF87A9323BC33E7 /* SwiftPrayTimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPrayTimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D54D427E0B2CEA4B9BBBAA0C /* Pods-SwiftPrayTimes_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftPrayTimes_Tests-dummy.m"; sourceTree = "<group>"; };
-		D666CE672CD4C35864A25900 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes.xcconfig"; sourceTree = "<group>"; };
-		D66BEFFE3B60CE8CA31E5820 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch"; sourceTree = "<group>"; };
-		EA61182E03E49C041B613266 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Info.plist"; sourceTree = "<group>"; };
-		EF7743E96ACD3F8CFF9D6A23 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m"; sourceTree = "<group>"; };
-		F21655F83B2A7239D9F70866 /* Pods-SwiftPrayTimes_Example-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Example-environment.h"; sourceTree = "<group>"; };
-		F4F641E3AF21986051D04804 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap"; path = "../Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap"; sourceTree = "<group>"; };
-		F91AF5803BF6E8E357BAC09C /* Pods-SwiftPrayTimes_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		FA718DB0448C691E19B5FAE7 /* Pods_SwiftPrayTimes_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftPrayTimes_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0385552A57C98392739E32F92BCE3987 /* Pods-SwiftPrayTimes_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftPrayTimes_Tests.modulemap"; sourceTree = "<group>"; };
+		04BBEB6F43BA94B82C500279D734556A /* Pods-SwiftPrayTimes_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example.release.xcconfig"; sourceTree = "<group>"; };
+		0D945E654AD96785DC2C5293EBA5DB6A /* Pods-SwiftPrayTimes_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Example-resources.sh"; sourceTree = "<group>"; };
+		201381C86D1ECF6067D415A2E2D0F0FA /* SwiftPrayTimes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftPrayTimes-dummy.m"; sourceTree = "<group>"; };
+		220BEBDB785A3A83A5942878A9C0650B /* Pods-SwiftPrayTimes_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Tests-umbrella.h"; sourceTree = "<group>"; };
+		2276BB8E4E141BC81B97011AA8065784 /* Pods-SwiftPrayTimes_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftPrayTimes_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		34A8BB3D501D81A2C7502A39CD0D7411 /* Pods-SwiftPrayTimes_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftPrayTimes_Tests-dummy.m"; sourceTree = "<group>"; };
+		361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftPrayTimes.xcconfig; sourceTree = "<group>"; };
+		3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3AFBA420CDDCCB337F78A92384D2AE0E /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4853404E582B7671CECDDA2C6094690C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B7EA0C25DFCED7F72793D7D7049CC6F /* SwiftPrayTimes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftPrayTimes-umbrella.h"; sourceTree = "<group>"; };
+		4D58EE28F8659DC70B02DA2E2C5A9F19 /* Pods-SwiftPrayTimes_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		58CC6B7D0909DFFB22B7E3A0AB9049C1 /* Pods-SwiftPrayTimes_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Example-frameworks.sh"; sourceTree = "<group>"; };
+		597B8C502F46C7CAC26D73EDF9EBFA72 /* Pods_SwiftPrayTimes_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftPrayTimes_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		660134A1E384867BF9B198517DC25C27 /* Pods-SwiftPrayTimes_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftPrayTimes_Tests-resources.sh"; sourceTree = "<group>"; };
+		67267D32FD1F99C8003066F7A5487DF4 /* Pods-SwiftPrayTimes_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		68E10CD345DE4DCA84CDFBEBF1C4AE9C /* SwiftPrayTimes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftPrayTimes.modulemap; sourceTree = "<group>"; };
+		6CF195F410D4920E5B7DFD88F67377AC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		863113F43947D53E2E6A15954C6F7F57 /* PrayTimes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrayTimes.swift; sourceTree = "<group>"; };
+		888A2DEF595ABC169B8AE71681FA9716 /* SwiftPrayTimes.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPrayTimes.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		980CCE76102B36D22163CBB9A24B126C /* ResourceBundle-SwiftPrayTimes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SwiftPrayTimes-Info.plist"; sourceTree = "<group>"; };
+		A567F9BC76FE0C65959E58FF4DD7FD0C /* SwiftPrayTimes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftPrayTimes-prefix.pch"; sourceTree = "<group>"; };
+		AA1376BABCF04F4886910EB95500F062 /* Pods-SwiftPrayTimes_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftPrayTimes_Example.modulemap"; sourceTree = "<group>"; };
+		ADCFC3B8520040DB89C6BA5DE2FD8B69 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C25640A0940ED7EFB0F4164B5B0EECE1 /* Pods-SwiftPrayTimes_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftPrayTimes_Example-dummy.m"; sourceTree = "<group>"; };
+		CE322E143765352780A41103B56EF749 /* SwiftPrayTimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPrayTimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E75251CAF7732E3F5111841BB45768B8 /* Pods-SwiftPrayTimes_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftPrayTimes_Example-umbrella.h"; sourceTree = "<group>"; };
+		EC0FD15CDABF9B45B262BFDCCD58B339 /* Pods-SwiftPrayTimes_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftPrayTimes_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		F21BD1D0053B3BD5DC1713844FC193B7 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftPrayTimes_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F91898301AE20419705625EC49AAE60E /* Pods-SwiftPrayTimes_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftPrayTimes_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		F9CB2D083529AE1DB39210AF4A7880B2 /* Pods-SwiftPrayTimes_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftPrayTimes_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FFA3BFFFB18F25F16D2357FF20A78CEF /* Pods_SwiftPrayTimes_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftPrayTimes_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		92F9BF60A1CB22BECD64AE03 /* Frameworks */ = {
+		03C2FBCAA61FC0D2CFFE5EA43F6FA8DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B694C9802519729EA52277BB618437CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		128455C33B32C62E5D6741205FCFA9D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD871F4756B07CC70B171EFE1F6FEE6F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8AF61CDDF02E12143733695F51F8DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9CEA4374DE9EB693FC1D70EC /* Frameworks */ = {
+		401E5ED79AABB8B6802936E1C7F498A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14A424C88281C7A185A9878C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2AF2650993146AA782701D3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50BFAB764F4989E1E14DF47E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D56CB5AF19542408B47CE027 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA98BD535094A452410F68C8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				826024B4752200AA37A70516 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FDB0A4DA1B1BCF2E18128E2F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E8FB3B1D7ADD64DC95C0C0D /* Foundation.framework in Frameworks */,
+				014EF11192B01ED079FAFFAF10FD40C4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20E81AD248EC0303C2A65009 /* Frameworks */ = {
+		112C7921E3A497328D11F4930CBBC9CA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				4CFAFEDB98E1F441D76C7F00 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3BDE43E0D85AC633744252C0 = {
-			isa = PBXGroup;
-			children = (
-				348E4E962AEB9B731AE25BD9 /* Podfile */,
-				48AD0682502AEC619A19831A /* Development Pods */,
-				20E81AD248EC0303C2A65009 /* Frameworks */,
-				71ACF21D6895EB1D62706D6D /* Products */,
-				C66B678269C591E860346970 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		48AD0682502AEC619A19831A /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EEB2E5A052E5A3A07DEC7B50 /* SwiftPrayTimes */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		4ABF2FAE7104A44C718B100C /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				D4C3816479C01F71EC744B56 /* Classes */,
-			);
-			path = Pod;
-			sourceTree = "<group>";
-		};
-		4CFAFEDB98E1F441D76C7F00 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				1715A0E4286F1A09262FB748 /* Foundation.framework */,
+				3997E5D2953ECDF377B85B234FDF550D /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4FCAD29D96A2AC74BE2F1FB3 /* Support Files */ = {
+		2BB26704D43EC553948DF762FC67CE0E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				668D9503375906877ECC8DB8 /* Info.plist */,
-				EA61182E03E49C041B613266 /* Info.plist */,
-				65C52FF3C0E424FD299C0667 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes.modulemap */,
-				D666CE672CD4C35864A25900 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes.xcconfig */,
-				3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */,
-				3200BBB5FC67D121A3405AB6 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m */,
-				BBF2A948278C79F565447D30 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-prefix.pch */,
-				0880AEC4D612C8A265916FC2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h */,
-				F4F641E3AF21986051D04804 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap */,
-				36B817070EDCA13336394990 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.xcconfig */,
-				B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */,
-				EF7743E96ACD3F8CFF9D6A23 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m */,
-				D66BEFFE3B60CE8CA31E5820 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch */,
-				66BEEFF7463BDC81BC984EF3 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h */,
+				363623688C3DEA04D00085E8F9FFA88C /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		363623688C3DEA04D00085E8F9FFA88C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				863113F43947D53E2E6A15954C6F7F57 /* PrayTimes.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		370277991D5A37640BDAA477D0501624 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADCFC3B8520040DB89C6BA5DE2FD8B69 /* Info.plist */,
+				980CCE76102B36D22163CBB9A24B126C /* ResourceBundle-SwiftPrayTimes-Info.plist */,
+				68E10CD345DE4DCA84CDFBEBF1C4AE9C /* SwiftPrayTimes.modulemap */,
+				361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */,
+				201381C86D1ECF6067D415A2E2D0F0FA /* SwiftPrayTimes-dummy.m */,
+				A567F9BC76FE0C65959E58FF4DD7FD0C /* SwiftPrayTimes-prefix.pch */,
+				4B7EA0C25DFCED7F72793D7D7049CC6F /* SwiftPrayTimes-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes";
+			path = "Example/Pods/Target Support Files/SwiftPrayTimes";
 			sourceTree = "<group>";
 		};
-		71ACF21D6895EB1D62706D6D /* Products */ = {
+		458250E66337BF28CAB56D22DA8359F6 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA718DB0448C691E19B5FAE7 /* Pods_SwiftPrayTimes_Example.framework */,
-				615854201FFA80D58D6E5E1D /* Pods_SwiftPrayTimes_Tests.framework */,
-				17FEE831EF221AA1D9121008 /* SwiftPrayTimes.bundle */,
-				9C2B0E0561E7F8F6981B0A04 /* SwiftPrayTimes.bundle */,
-				A2458D3DA85551BD650F982A /* SwiftPrayTimes.framework */,
-				C0028B6AFAF87A9323BC33E7 /* SwiftPrayTimes.framework */,
+				7D92FB0A19D19C5BC0EF84F4BECDA9C2 /* Pods-SwiftPrayTimes_Example */,
+				7D678685CA007E97B2527F7F244BD2A6 /* Pods-SwiftPrayTimes_Tests */,
 			);
-			name = Products;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7E6F9E88BEFEB845815E666B /* Pods-SwiftPrayTimes_Tests */ = {
+		74696F184A130211F5297E816391D26F /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A509AFCC97E3B46DA70EF2F0 /* Info.plist */,
-				87B820868EF4B5DF46B640AC /* Pods-SwiftPrayTimes_Tests.modulemap */,
-				8D7D9248ABD812C9D5D21CF8 /* Pods-SwiftPrayTimes_Tests-acknowledgements.markdown */,
-				82AB71A6E701DD73AED7955A /* Pods-SwiftPrayTimes_Tests-acknowledgements.plist */,
-				D54D427E0B2CEA4B9BBBAA0C /* Pods-SwiftPrayTimes_Tests-dummy.m */,
-				63C529F79601564E17229CE8 /* Pods-SwiftPrayTimes_Tests-environment.h */,
-				F91AF5803BF6E8E357BAC09C /* Pods-SwiftPrayTimes_Tests-frameworks.sh */,
-				B8DD665EE3AE50F4CCD99831 /* Pods-SwiftPrayTimes_Tests-resources.sh */,
-				602C9B7B89AB66B46CA52E3D /* Pods-SwiftPrayTimes_Tests-umbrella.h */,
-				88596067F527D92502C059B9 /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */,
-				4E5C0DD22CC843498896BAD9 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */,
+				ABBC1EFE259175305DAA39A4F1E103A9 /* SwiftPrayTimes */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7D678685CA007E97B2527F7F244BD2A6 /* Pods-SwiftPrayTimes_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6CF195F410D4920E5B7DFD88F67377AC /* Info.plist */,
+				0385552A57C98392739E32F92BCE3987 /* Pods-SwiftPrayTimes_Tests.modulemap */,
+				F9CB2D083529AE1DB39210AF4A7880B2 /* Pods-SwiftPrayTimes_Tests-acknowledgements.markdown */,
+				EC0FD15CDABF9B45B262BFDCCD58B339 /* Pods-SwiftPrayTimes_Tests-acknowledgements.plist */,
+				34A8BB3D501D81A2C7502A39CD0D7411 /* Pods-SwiftPrayTimes_Tests-dummy.m */,
+				4D58EE28F8659DC70B02DA2E2C5A9F19 /* Pods-SwiftPrayTimes_Tests-frameworks.sh */,
+				660134A1E384867BF9B198517DC25C27 /* Pods-SwiftPrayTimes_Tests-resources.sh */,
+				220BEBDB785A3A83A5942878A9C0650B /* Pods-SwiftPrayTimes_Tests-umbrella.h */,
+				3AFBA420CDDCCB337F78A92384D2AE0E /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */,
+				F21BD1D0053B3BD5DC1713844FC193B7 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */,
 			);
 			name = "Pods-SwiftPrayTimes_Tests";
 			path = "Target Support Files/Pods-SwiftPrayTimes_Tests";
 			sourceTree = "<group>";
 		};
-		C66B678269C591E860346970 /* Targets Support Files */ = {
+		7D92FB0A19D19C5BC0EF84F4BECDA9C2 /* Pods-SwiftPrayTimes_Example */ = {
 			isa = PBXGroup;
 			children = (
-				E55264596AB6284DD7E6192E /* Pods-SwiftPrayTimes_Example */,
-				7E6F9E88BEFEB845815E666B /* Pods-SwiftPrayTimes_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		D4C3816479C01F71EC744B56 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				4C2C830A1F0EEF13EE9A64A0 /* PrayTimes.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		E55264596AB6284DD7E6192E /* Pods-SwiftPrayTimes_Example */ = {
-			isa = PBXGroup;
-			children = (
-				34DFC70203CEB362540722F8 /* Info.plist */,
-				A3358E49B7B6782E4E6BA2CE /* Pods-SwiftPrayTimes_Example.modulemap */,
-				402CFF9F45763936A2D0DA4B /* Pods-SwiftPrayTimes_Example-acknowledgements.markdown */,
-				179D9A94F8CC7AD0B5024402 /* Pods-SwiftPrayTimes_Example-acknowledgements.plist */,
-				A6292D36AB0E290E972BA97E /* Pods-SwiftPrayTimes_Example-dummy.m */,
-				F21655F83B2A7239D9F70866 /* Pods-SwiftPrayTimes_Example-environment.h */,
-				97625C19354C41324A9CD7B3 /* Pods-SwiftPrayTimes_Example-frameworks.sh */,
-				6591A3350B61B8F70EC22E44 /* Pods-SwiftPrayTimes_Example-resources.sh */,
-				47E6C6FA638C77178CE991FD /* Pods-SwiftPrayTimes_Example-umbrella.h */,
-				3114CAFAACE1A676B282B8FA /* Pods-SwiftPrayTimes_Example.debug.xcconfig */,
-				B8E2D0CDEB1C86BA41472D37 /* Pods-SwiftPrayTimes_Example.release.xcconfig */,
+				4853404E582B7671CECDDA2C6094690C /* Info.plist */,
+				AA1376BABCF04F4886910EB95500F062 /* Pods-SwiftPrayTimes_Example.modulemap */,
+				2276BB8E4E141BC81B97011AA8065784 /* Pods-SwiftPrayTimes_Example-acknowledgements.markdown */,
+				F91898301AE20419705625EC49AAE60E /* Pods-SwiftPrayTimes_Example-acknowledgements.plist */,
+				C25640A0940ED7EFB0F4164B5B0EECE1 /* Pods-SwiftPrayTimes_Example-dummy.m */,
+				58CC6B7D0909DFFB22B7E3A0AB9049C1 /* Pods-SwiftPrayTimes_Example-frameworks.sh */,
+				0D945E654AD96785DC2C5293EBA5DB6A /* Pods-SwiftPrayTimes_Example-resources.sh */,
+				E75251CAF7732E3F5111841BB45768B8 /* Pods-SwiftPrayTimes_Example-umbrella.h */,
+				67267D32FD1F99C8003066F7A5487DF4 /* Pods-SwiftPrayTimes_Example.debug.xcconfig */,
+				04BBEB6F43BA94B82C500279D734556A /* Pods-SwiftPrayTimes_Example.release.xcconfig */,
 			);
 			name = "Pods-SwiftPrayTimes_Example";
 			path = "Target Support Files/Pods-SwiftPrayTimes_Example";
 			sourceTree = "<group>";
 		};
-		EEB2E5A052E5A3A07DEC7B50 /* SwiftPrayTimes */ = {
+		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				4ABF2FAE7104A44C718B100C /* Pod */,
-				4FCAD29D96A2AC74BE2F1FB3 /* Support Files */,
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				74696F184A130211F5297E816391D26F /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8E75D6ED65D1ED13BF55FCB2E939171B /* Products */,
+				458250E66337BF28CAB56D22DA8359F6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8E75D6ED65D1ED13BF55FCB2E939171B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				597B8C502F46C7CAC26D73EDF9EBFA72 /* Pods_SwiftPrayTimes_Example.framework */,
+				FFA3BFFFB18F25F16D2357FF20A78CEF /* Pods_SwiftPrayTimes_Tests.framework */,
+				888A2DEF595ABC169B8AE71681FA9716 /* SwiftPrayTimes.bundle */,
+				CE322E143765352780A41103B56EF749 /* SwiftPrayTimes.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABBC1EFE259175305DAA39A4F1E103A9 /* SwiftPrayTimes */ = {
+			isa = PBXGroup;
+			children = (
+				2BB26704D43EC553948DF762FC67CE0E /* Pod */,
+				370277991D5A37640BDAA477D0501624 /* Support Files */,
 			);
 			name = SwiftPrayTimes;
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				112C7921E3A497328D11F4930CBBC9CA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		937E950CA35A8032280724AA /* Headers */ = {
+		1BDFB3C2D80DF24C865AAF3C43A8FF08 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434C7EB2F5D107D66CD34EFC /* Pods-SwiftPrayTimes_Tests-umbrella.h in Headers */,
+				9E806F9294E83850969AE7DAAD649191 /* SwiftPrayTimes-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A70A3CB9F7297CEA5D37F3C1 /* Headers */ = {
+		58B89A858A8930BF310A607B8D3C54E6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ECFA4B35A31F96B6B2C220 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-umbrella.h in Headers */,
+				60C8591BA592DDAF287C9C7B2EB17448 /* Pods-SwiftPrayTimes_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4A54382EAC1817384536970 /* Headers */ = {
+		5EADE8CB374B914C9A905AA0ECED85B5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85BFCB4AB668503CD0DD8D2C /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D06A191E32E72921A2B84C28 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7620FEC282BAA2B7CDDD84B7 /* Pods-SwiftPrayTimes_Example-umbrella.h in Headers */,
+				0EB1BAEE2FC0D8E5A4D052AA7433BA8F /* Pods-SwiftPrayTimes_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		240DAF81653F3B919594A9C2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes */ = {
+		2A6711231182716F65F117A27159DFFC /* Pods-SwiftPrayTimes_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C014F5E6CAEF08F85CD7E01 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes" */;
+			buildConfigurationList = A73F5296AA8973633A530039CC2C92F3 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example" */;
 			buildPhases = (
-				D39EC018564960F711C2304C /* Sources */,
-				D56CB5AF19542408B47CE027 /* Frameworks */,
-				288F9493545FCDB46C82AA97 /* Resources */,
+				2DEC0DCB21DD58AEC14CE83DA5CF340E /* Sources */,
+				128455C33B32C62E5D6741205FCFA9D0 /* Frameworks */,
+				5EADE8CB374B914C9A905AA0ECED85B5 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes";
-			productName = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes";
-			productReference = 17FEE831EF221AA1D9121008 /* SwiftPrayTimes.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		5CD2B61E2966A094D31D709A /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A4F2837F438E86C8D6C8BB22 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes" */;
-			buildPhases = (
-				0BF82DBCF3A1B47979B917FD /* Sources */,
-				92F9BF60A1CB22BECD64AE03 /* Frameworks */,
-				D5E42A2FEDB8B9C2FB81B2B9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes";
-			productName = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes";
-			productReference = 9C2B0E0561E7F8F6981B0A04 /* SwiftPrayTimes.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		AB5DBA5FD11E8CE8A0088BDD /* Pods-SwiftPrayTimes_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DE03AAB28FF1B4D3EC9DD474 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests" */;
-			buildPhases = (
-				D3AFD760366C77C7DF00138D /* Sources */,
-				FDB0A4DA1B1BCF2E18128E2F /* Frameworks */,
-				937E950CA35A8032280724AA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8C9395F854FCD34052810C6F /* PBXTargetDependency */,
-			);
-			name = "Pods-SwiftPrayTimes_Tests";
-			productName = "Pods-SwiftPrayTimes_Tests";
-			productReference = 615854201FFA80D58D6E5E1D /* Pods_SwiftPrayTimes_Tests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B014E30BED79FBA1E69417BE /* Pods-SwiftPrayTimes_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1CA5EBC1B3E12C227E8F32A /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example" */;
-			buildPhases = (
-				4132253C9C995BB04BF502C6 /* Sources */,
-				B2AF2650993146AA782701D3 /* Frameworks */,
-				D06A191E32E72921A2B84C28 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AE5EF87B5AA74C63A48A3EFA /* PBXTargetDependency */,
+				1AB4B6FF7278C7D6081043F1BC616ED5 /* PBXTargetDependency */,
 			);
 			name = "Pods-SwiftPrayTimes_Example";
 			productName = "Pods-SwiftPrayTimes_Example";
-			productReference = FA718DB0448C691E19B5FAE7 /* Pods_SwiftPrayTimes_Example.framework */;
+			productReference = 597B8C502F46C7CAC26D73EDF9EBFA72 /* Pods_SwiftPrayTimes_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BD5BFE4F9D661EB911F988E7 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes */ = {
+		73FAE3317D5AFCCDC43B5530F2337B54 /* SwiftPrayTimes-SwiftPrayTimes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADA471B1D8CEDE8693A3A84C /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes" */;
+			buildConfigurationList = 746C064446587E6231AD6ABF84F53C60 /* Build configuration list for PBXNativeTarget "SwiftPrayTimes-SwiftPrayTimes" */;
 			buildPhases = (
-				EB944E7ED1A5A940CDB03ABA /* Sources */,
-				9CEA4374DE9EB693FC1D70EC /* Frameworks */,
-				3A2585BD524DAA4640ABFFEE /* Resources */,
-				C4A54382EAC1817384536970 /* Headers */,
+				6B5420381235DF6C9993E32411846C8D /* Sources */,
+				3D8AF61CDDF02E12143733695F51F8DF /* Frameworks */,
+				CB0CCE1812C598FA14F556653A1BF968 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				95777CCFBAF36FDC0064862A /* PBXTargetDependency */,
 			);
-			name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes";
-			productName = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes";
-			productReference = A2458D3DA85551BD650F982A /* SwiftPrayTimes.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "SwiftPrayTimes-SwiftPrayTimes";
+			productName = "SwiftPrayTimes-SwiftPrayTimes";
+			productReference = 888A2DEF595ABC169B8AE71681FA9716 /* SwiftPrayTimes.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
-		F1DB3239AF8324B83D97CE10 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes */ = {
+		75003B064CDD993576330D7EA62D8508 /* SwiftPrayTimes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E75C9D282EB145E5D179D5EC /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example-SwiftPrayTimes" */;
+			buildConfigurationList = 0D4C306CBA9A949CEC0C18C117978EE7 /* Build configuration list for PBXNativeTarget "SwiftPrayTimes" */;
 			buildPhases = (
-				CAC45A07F5AAD179BB1F2937 /* Sources */,
-				DA98BD535094A452410F68C8 /* Frameworks */,
-				46706DF140BBFF0402D961B4 /* Resources */,
-				A70A3CB9F7297CEA5D37F3C1 /* Headers */,
+				8AE7F2D4E14224D76AF06C9F48ED0B6E /* Sources */,
+				03C2FBCAA61FC0D2CFFE5EA43F6FA8DF /* Frameworks */,
+				10EB398FD6B6111A5B36424C65D8AAED /* Resources */,
+				1BDFB3C2D80DF24C865AAF3C43A8FF08 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4F9CEB6E796136897FE5C14F /* PBXTargetDependency */,
+				A4816EC68099A2DFCFCBABF94CD8F3E9 /* PBXTargetDependency */,
 			);
-			name = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes";
-			productName = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes";
-			productReference = C0028B6AFAF87A9323BC33E7 /* SwiftPrayTimes.framework */;
+			name = SwiftPrayTimes;
+			productName = SwiftPrayTimes;
+			productReference = CE322E143765352780A41103B56EF749 /* SwiftPrayTimes.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAD6226874D30FBB180BB342F4330ACE /* Pods-SwiftPrayTimes_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9F60270B2EB8B9105E9556AE9EE33D /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests" */;
+			buildPhases = (
+				36669063E023010934DB7350A64F44F9 /* Sources */,
+				401E5ED79AABB8B6802936E1C7F498A5 /* Frameworks */,
+				58B89A858A8930BF310A607B8D3C54E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SwiftPrayTimes_Tests";
+			productName = "Pods-SwiftPrayTimes_Tests";
+			productReference = FFA3BFFFB18F25F16D2357FF20A78CEF /* Pods_SwiftPrayTimes_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		461331C9CC0D5D940F2A6212 /* Project object */ = {
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 			};
-			buildConfigurationList = 77EE78AD9E25352EDEE5698E /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 3BDE43E0D85AC633744252C0;
-			productRefGroup = 71ACF21D6895EB1D62706D6D /* Products */;
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8E75D6ED65D1ED13BF55FCB2E939171B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B014E30BED79FBA1E69417BE /* Pods-SwiftPrayTimes_Example */,
-				F1DB3239AF8324B83D97CE10 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes */,
-				240DAF81653F3B919594A9C2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes */,
-				AB5DBA5FD11E8CE8A0088BDD /* Pods-SwiftPrayTimes_Tests */,
-				BD5BFE4F9D661EB911F988E7 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes */,
-				5CD2B61E2966A094D31D709A /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes */,
+				2A6711231182716F65F117A27159DFFC /* Pods-SwiftPrayTimes_Example */,
+				EAD6226874D30FBB180BB342F4330ACE /* Pods-SwiftPrayTimes_Tests */,
+				75003B064CDD993576330D7EA62D8508 /* SwiftPrayTimes */,
+				73FAE3317D5AFCCDC43B5530F2337B54 /* SwiftPrayTimes-SwiftPrayTimes */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		288F9493545FCDB46C82AA97 /* Resources */ = {
+		10EB398FD6B6111A5B36424C65D8AAED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270D7BCE1DC9C8BE51CD996070F3F46C /* SwiftPrayTimes.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3A2585BD524DAA4640ABFFEE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DCBA9251676523C5939F0E09 /* SwiftPrayTimes.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		46706DF140BBFF0402D961B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				85682DA314282AAB021C42A4 /* SwiftPrayTimes.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D5E42A2FEDB8B9C2FB81B2B9 /* Resources */ = {
+		CB0CCE1812C598FA14F556653A1BF968 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -509,197 +390,104 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0BF82DBCF3A1B47979B917FD /* Sources */ = {
+		2DEC0DCB21DD58AEC14CE83DA5CF340E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				204FE70634C4C5EDBE6968F733983599 /* Pods-SwiftPrayTimes_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36669063E023010934DB7350A64F44F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C8B362F031B8283AF5F6DC18E6EE8DF /* Pods-SwiftPrayTimes_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B5420381235DF6C9993E32411846C8D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4132253C9C995BB04BF502C6 /* Sources */ = {
+		8AE7F2D4E14224D76AF06C9F48ED0B6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E1613A88410827C6D7F31BC /* Pods-SwiftPrayTimes_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAC45A07F5AAD179BB1F2937 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				125BBFB85A019E004C2F81E8 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-dummy.m in Sources */,
-				D2F53B986819BA2E831C2E1C /* PrayTimes.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D39EC018564960F711C2304C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3AFD760366C77C7DF00138D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				48BC30E9D1B2977871F20D7C /* Pods-SwiftPrayTimes_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB944E7ED1A5A940CDB03ABA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2973431643B7821158670414 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-dummy.m in Sources */,
-				0681A91C2614E59BE7A24260 /* PrayTimes.swift in Sources */,
+				C839BB44B673ED03E02EAC15CF756959 /* PrayTimes.swift in Sources */,
+				FE5A382CD95DF0772C54F4E91F93803F /* SwiftPrayTimes-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4F9CEB6E796136897FE5C14F /* PBXTargetDependency */ = {
+		1AB4B6FF7278C7D6081043F1BC616ED5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes";
-			target = 240DAF81653F3B919594A9C2 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes */;
-			targetProxy = 534ED95FF3846596CA107C73 /* PBXContainerItemProxy */;
+			name = SwiftPrayTimes;
+			target = 75003B064CDD993576330D7EA62D8508 /* SwiftPrayTimes */;
+			targetProxy = 1B42FE09953ECC8517826462FCBFA7CE /* PBXContainerItemProxy */;
 		};
-		8C9395F854FCD34052810C6F /* PBXTargetDependency */ = {
+		A4816EC68099A2DFCFCBABF94CD8F3E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes";
-			target = BD5BFE4F9D661EB911F988E7 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes */;
-			targetProxy = 2ECA1DA5C17DAB5139E59268 /* PBXContainerItemProxy */;
-		};
-		95777CCFBAF36FDC0064862A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes";
-			target = 5CD2B61E2966A094D31D709A /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes */;
-			targetProxy = 709E9AAB73A64B0183DCB422 /* PBXContainerItemProxy */;
-		};
-		AE5EF87B5AA74C63A48A3EFA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-SwiftPrayTimes_Example-SwiftPrayTimes";
-			target = F1DB3239AF8324B83D97CE10 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes */;
-			targetProxy = BC3DA4E06007CFEE27721717 /* PBXContainerItemProxy */;
+			name = "SwiftPrayTimes-SwiftPrayTimes";
+			target = 73FAE3317D5AFCCDC43B5530F2337B54 /* SwiftPrayTimes-SwiftPrayTimes */;
+			targetProxy = EB02D3E3321F306949396747D2D9680B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		077C20AC76FDFF31D8D3A41C /* Release */ = {
+		126E5C62882D134A1DC91F7BA79C85BF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8E2D0CDEB1C86BA41472D37 /* Pods-SwiftPrayTimes_Example.release.xcconfig */;
+			baseConfigurationReference = 361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Pods-SwiftPrayTimes_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_SwiftPrayTimes_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		18A902FCFF619A6B124105E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E5C0DD22CC843498896BAD9 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Pods-SwiftPrayTimes_Tests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_SwiftPrayTimes_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		27ADAEF07929EFB3846F791C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Pods-SwiftPrayTimes_Example-SwiftPrayTimes-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Pods-SwiftPrayTimes_Example-SwiftPrayTimes.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SwiftPrayTimes/ResourceBundle-SwiftPrayTimes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = SwiftPrayTimes;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		333F88D210BA5F3A5A4EC50C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-SwiftPrayTimes_Tests";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
-		4DECD30A25B53BBD27BA2F31 /* Release */ = {
+		1E9D221E5004F1712AD58E5247320B8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */;
+			baseConfigurationReference = 361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-SwiftPrayTimes_Tests";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftPrayTimes/SwiftPrayTimes-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftPrayTimes/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftPrayTimes/SwiftPrayTimes.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = SwiftPrayTimes;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		65A3657E3B3DA8472B7902E3 /* Release */ = {
+		372FF5048FF42C3A7A18B70A30D785C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -719,7 +507,10 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -733,7 +524,71 @@
 			};
 			name = Release;
 		};
-		73B7DBB8273108259D2C1A96 /* Debug */ = {
+		39E0F64E98E7D371B5A124FB4D48739D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftPrayTimes/SwiftPrayTimes-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftPrayTimes/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftPrayTimes/SwiftPrayTimes.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
+				PRODUCT_NAME = SwiftPrayTimes;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E0AA4410774F5E2FA431005D6CE556D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F21BD1D0053B3BD5DC1713844FC193B7 /* Pods-SwiftPrayTimes_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Pods-SwiftPrayTimes_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftPrayTimes_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		70F0378D63DE3D2DCC739550669BD46A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -751,10 +606,12 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -772,26 +629,80 @@
 			};
 			name = Debug;
 		};
-		91EB320107E16A5DB910831C /* Debug */ = {
+		78DD1EC46BB5497039B8C6F73BB85AFD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3114CAFAACE1A676B282B8FA /* Pods-SwiftPrayTimes_Example.debug.xcconfig */;
+			baseConfigurationReference = 04BBEB6F43BA94B82C500279D734556A /* Pods-SwiftPrayTimes_Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Pods-SwiftPrayTimes_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SwiftPrayTimes_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D7E8882EB4B92E555C193E7BA7E930A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 361517100AB3A427C912487B293F6BEE /* SwiftPrayTimes.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/SwiftPrayTimes/ResourceBundle-SwiftPrayTimes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
+				PRODUCT_NAME = SwiftPrayTimes;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		F564C6AA4D8B188783627E71E2E8545A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67267D32FD1F99C8003066F7A5487DF4 /* Pods-SwiftPrayTimes_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example/Pods-SwiftPrayTimes_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_SwiftPrayTimes_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -802,211 +713,88 @@
 			};
 			name = Debug;
 		};
-		BA1D62D1A9CC89E78810327B /* Release */ = {
+		F81C75531E76C3985CFEA6FBA3DA8D75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */;
+			baseConfigurationReference = 3AFBA420CDDCCB337F78A92384D2AE0E /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Pods-SwiftPrayTimes_Example-SwiftPrayTimes-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Example-SwiftPrayTimes/Pods-SwiftPrayTimes_Example-SwiftPrayTimes.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C833A8EB4FA4AE9006C7CD20 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-SwiftPrayTimes_Example";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		E1A77E0A9F862CC95604FF89 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		E3762569AF4669FFCA9EB6A3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E379999E13E0897FEF31988 /* Pods-SwiftPrayTimes_Example-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-SwiftPrayTimes_Example";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		ECF4047DE730A0EE06465802 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88596067F527D92502C059B9 /* Pods-SwiftPrayTimes_Tests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests/Pods-SwiftPrayTimes_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_SwiftPrayTimes_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		EF63B8C26B71039CACB044A5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7E472A718C959D695D1F356 /* Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes/Pods-SwiftPrayTimes_Tests-SwiftPrayTimes.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftPrayTimes;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		77EE78AD9E25352EDEE5698E /* Build configuration list for PBXProject "Pods" */ = {
+		0D4C306CBA9A949CEC0C18C117978EE7 /* Build configuration list for PBXNativeTarget "SwiftPrayTimes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73B7DBB8273108259D2C1A96 /* Debug */,
-				65A3657E3B3DA8472B7902E3 /* Release */,
+				39E0F64E98E7D371B5A124FB4D48739D /* Debug */,
+				1E9D221E5004F1712AD58E5247320B8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C014F5E6CAEF08F85CD7E01 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example-SwiftPrayTimes-SwiftPrayTimes" */ = {
+		2C9F60270B2EB8B9105E9556AE9EE33D /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3762569AF4669FFCA9EB6A3 /* Debug */,
-				C833A8EB4FA4AE9006C7CD20 /* Release */,
+				F81C75531E76C3985CFEA6FBA3DA8D75 /* Debug */,
+				3E0AA4410774F5E2FA431005D6CE556D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4F2837F438E86C8D6C8BB22 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-SwiftPrayTimes" */ = {
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				333F88D210BA5F3A5A4EC50C /* Debug */,
-				4DECD30A25B53BBD27BA2F31 /* Release */,
+				70F0378D63DE3D2DCC739550669BD46A /* Debug */,
+				372FF5048FF42C3A7A18B70A30D785C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADA471B1D8CEDE8693A3A84C /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes" */ = {
+		746C064446587E6231AD6ABF84F53C60 /* Build configuration list for PBXNativeTarget "SwiftPrayTimes-SwiftPrayTimes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1A77E0A9F862CC95604FF89 /* Debug */,
-				EF63B8C26B71039CACB044A5 /* Release */,
+				126E5C62882D134A1DC91F7BA79C85BF /* Debug */,
+				D7E8882EB4B92E555C193E7BA7E930A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1CA5EBC1B3E12C227E8F32A /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example" */ = {
+		A73F5296AA8973633A530039CC2C92F3 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				91EB320107E16A5DB910831C /* Debug */,
-				077C20AC76FDFF31D8D3A41C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DE03AAB28FF1B4D3EC9DD474 /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ECF4047DE730A0EE06465802 /* Debug */,
-				18A902FCFF619A6B124105E1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E75C9D282EB145E5D179D5EC /* Build configuration list for PBXNativeTarget "Pods-SwiftPrayTimes_Example-SwiftPrayTimes" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27ADAEF07929EFB3846F791C /* Debug */,
-				BA1D62D1A9CC89E78810327B /* Release */,
+				F564C6AA4D8B188783627E71E2E8545A /* Debug */,
+				78DD1EC46BB5497039B8C6F73BB85AFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 461331C9CC0D5D940F2A6212 /* Project object */;
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 }

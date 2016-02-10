@@ -1,5 +1,5 @@
 framework module SwiftPrayTimes {
-  umbrella header "Pods-SwiftPrayTimes_Tests-SwiftPrayTimes-umbrella.h"
+  umbrella header "SwiftPrayTimes-umbrella.h"
 
   export *
   module * { export * }
