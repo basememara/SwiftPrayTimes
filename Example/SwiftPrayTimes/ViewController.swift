@@ -15,9 +15,9 @@ class ViewController: UITableViewController {
     
     let method = "ISNA"
     let juristic = "Standard"
-    let coords = [43.58, -79.68]
-    let timezone = -5.0
-    let dst = false
+    let coords = [37.323, -122.0527]
+    let timezone = -8.0
+    let dst = true
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
