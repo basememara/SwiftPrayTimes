@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'SwiftPrayTimes_Example' do
+target "SwiftPrayTimes_Example" do
     pod "SwiftPrayTimes", :path => "../"
     
-    target 'SwiftPrayTimes_Tests' do
+    target "SwiftPrayTimes_Tests" do
         inherit! :search_paths
     end
     
