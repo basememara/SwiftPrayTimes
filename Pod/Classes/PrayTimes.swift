@@ -744,7 +744,7 @@ public struct PrayTimes {
     }
     
     // Adjust times
-    public func adjustTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func adjustTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         for item in times {
             times[item.0] = times[item.0]!
                 + (Double(timeZone) - lng / 15)
