@@ -15,9 +15,9 @@ class ViewController: UITableViewController {
     
     let method = "ISNA"
     let juristic = "Standard"
-    let coords = [37.323, -122.0527]
-    let timezone = -8.0
-    let dst = true
+    let coords = [43.58, -79.68]
+    let timezone = -5.0
+    let dst = false
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
@@ -25,7 +25,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         // Create instance
-        let prayTimes = PrayTimes(
+        var prayTimes = PrayTimes(
             method: method,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )

@@ -82,7 +82,7 @@ println("Isha: \(ishaTime)")
 
 import Foundation
 
-public class PrayTimes {
+public struct PrayTimes {
     
     //------------------------ Enumerations --------------------------
     
@@ -103,11 +103,7 @@ public class PrayTimes {
         
         // http://natashatherobot.com/swift-enums-tableviews/
         public func getName() -> String {
-            if let name = TimeName.names[self] {
-                return name
-            } else {
-                return ""
-            }
+            return TimeName.names[self] ?? ""
         }
     }
     
@@ -150,7 +146,7 @@ public class PrayTimes {
         }
     }
     
-    public class PrayerResult: NSObject {
+    public struct PrayerResult {
         public var name: String = ""
         public var abbr: String = ""
         public var time: Double = 0
@@ -160,9 +156,10 @@ public class PrayTimes {
         }
         public var type: TimeName
         public var isFard = false
-        private var timeFormat = "12h"
-        private var timeSuffixes = ["am", "pm"]
-        private var invalidTime =  "-----"
+        
+        var timeFormat = "12h"
+        var timeSuffixes = ["am", "pm"]
+        var invalidTime =  "-----"
         
         public init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil, var ofDate: NSDate = NSDate()) {
             self.time = time
@@ -224,10 +221,8 @@ public class PrayTimes {
             case TimeName.Fajr:
                 self.abbr = "FJR"
                 self.isFard = true
-                break;
             case TimeName.Sunrise:
                 self.abbr = "SHK"
-                break;
             case TimeName.Dhuhr:
                 self.abbr = "DHR"
                 self.isFard = true
@@ -239,21 +234,16 @@ public class PrayTimes {
                 if components?.weekday == 6 {
                     self.name = "Jumuah"
                 }
-                
-                break;
             case TimeName.Asr:
                 self.abbr = "ASR"
                 self.isFard = true
-                break;
             case TimeName.Maghrib:
                 self.abbr = "MGB"
                 self.isFard = true
-                break;
             case TimeName.Isha:
                 self.abbr = "ISH"
                 self.isFard = true
-                break;
-            default: break;
+            default: break
             }
         }
         
@@ -310,7 +300,7 @@ public class PrayTimes {
         }
     }
     
-    public class PrayerResultSeries: NSObject {
+    public struct PrayerResultSeries {
         public var date: NSDate
         public var times: [PrayerResult]
         
@@ -323,7 +313,7 @@ public class PrayTimes {
     //------------------------ Constants --------------------------
     
     // Calculation Methods
-    private let methods = [
+    let methods = [
         "MWL" : PrayerMethod("Muslim World League", [
             AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 18.0),
             AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 17.0)
@@ -360,7 +350,7 @@ public class PrayTimes {
     
     //---------------------- Default Settings --------------------
     
-    private static let defaultParams = [
+    static let defaultParams = [
         AdjustmentParam(
             time: TimeName.Maghrib,
             type: AdjustmentType.Minute,
@@ -373,13 +363,13 @@ public class PrayTimes {
         )
     ]
     
-    private static let defaultSettings = [
+    static let defaultSettings = [
         AdjustmentParam(time: TimeName.Imsak, type: AdjustmentType.Minute, value: 10.0),
         AdjustmentParam(time: TimeName.Dhuhr, type: AdjustmentType.Minute, value: 0.0),
         AdjustmentParam(time: TimeName.Asr, type: AdjustmentType.Method, value: AdjustmentMethod.Standard)
     ]
     
-    private static let defaultTimes: [TimeName: Double] = [
+    static let defaultTimes: [TimeName: Double] = [
         TimeName.Imsak: 5.0,
         TimeName.Fajr: 5.0,
         TimeName.Sunrise: 6.0,
@@ -391,22 +381,23 @@ public class PrayTimes {
     ]
     
     // Do not change anything here; use adjust method instead
-    private var calcMethod = "MWL"
-    private var highLats = ElavationMethod.NightMiddle
-    private var settings = defaultSettings
+    var calcMethod = "MWL"
+    var highLats = ElavationMethod.NightMiddle
+    var settings = defaultSettings
     
     public var timeFormat = "12h"
     public var timeSuffixes = ["am", "pm"]
-    private var timeZone =  Double(0)
-    private var jDate =  Double(0)
-    private var invalidTime =  "-----"
     
-    private var lat = Double(0)
-    private var lng = Double(0)
-    private var elv = Double(0)
+    var timeZone =  Double(0)
+    var jDate =  Double(0)
+    var invalidTime =  "-----"
     
-    private var numIterations = 1
-    private var offset: [TimeName: Double] = [
+    var lat = Double(0)
+    var lng = Double(0)
+    var elv = Double(0)
+    
+    var numIterations = 1
+    var offset: [TimeName: Double] = [
         TimeName.Imsak: 0.0,
         TimeName.Fajr: 0.0,
         TimeName.Sunrise: 0.0,
@@ -436,7 +427,7 @@ public class PrayTimes {
     
     //-------------------- Interface Functions --------------------
     
-    public func setMethod(method: String) {
+    public mutating func setMethod(method: String) {
         // Reset settings
         settings = PrayTimes.defaultSettings
         
@@ -449,14 +440,14 @@ public class PrayTimes {
         }
     }
     
-    public func adjust(params: [AdjustmentParam]) {
+    public mutating func adjust(params: [AdjustmentParam]) {
         for item in params {
             settings = settings.filter { $0.time != item.time } // Remove duplicate
             settings.append(item)
         }
     }
     
-    public func tune(timeOffsets: [TimeName: Double]) {
+    public mutating func tune(timeOffsets: [TimeName: Double]) {
         for item in timeOffsets {
             offset[item.0] = item.1;
         }
@@ -489,7 +480,7 @@ public class PrayTimes {
     }
     
     // Get prayer times for a given date
-    public func getTimes(
+    public mutating func getTimes(
         coords: [Double],
         date: NSDate = NSDate(),
         timezone: Double? = nil,
@@ -497,7 +488,7 @@ public class PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completion: (times: [TimeName: PrayerResult]) -> Void) -> Void {
+        completion: (times: [TimeName: PrayerResult]) -> Void) {
             lat = coords[0]
             lng = coords[1]
             elv = coords.count > 2 ? coords[2] : 0
@@ -560,11 +551,11 @@ public class PrayTimes {
                     } else {
                         print(error!.localizedDescription)
                     }
-                    }.resume()
+                }.resume()
             }
     }
     
-    public func getTimesForRange(
+    public mutating func getTimesForRange(
         coords: [Double],
         endDate: NSDate,
         date: NSDate = NSDate(),
@@ -600,9 +591,8 @@ public class PrayTimes {
                     dst: dst,
                     dstOffset: dstOffset,
                     format: format,
-                    isLocalCoords: isLocalCoords,
-                    completion: {
-                    (times: [TimeName: PrayerResult]) in
+                    isLocalCoords: isLocalCoords) {
+                        times in
                         // Pluck only times array and sort by time
                         let sortedTimes = Array(times.values).sort {
                             $0.time < $1.time
@@ -619,7 +609,7 @@ public class PrayTimes {
                                     callback()
                                 }
                         }
-                })
+                }
             }
     }
     
@@ -627,7 +617,7 @@ public class PrayTimes {
     
     
     // Compute prayer times
-    public func computeTimes() -> [TimeName: Double] {
+    func computeTimes() -> [TimeName: Double] {
         var times = computePrayerTimes(PrayTimes.defaultTimes)
         
         times = adjustTimes(times)
@@ -645,7 +635,7 @@ public class PrayTimes {
     }
     
     // Compute prayer times at given julian date
-    public func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         times = dayPortion(times)
         
         let imsak = sunAngleTime(getSettingValue(TimeName.Imsak),
@@ -689,15 +679,15 @@ public class PrayTimes {
     
     
     // Compute mid-day time
-    public func midDay(time: Double!) -> Double {
-        let eqt = sunPosition(jDate + time)["equation"]!
+    func midDay(time: Double!) -> Double {
+        let eqt = sunPosition(jDate + time).equation
         let noon = fixHour(12.0 - eqt)
         return noon
     }
     
     // Compute the time at which sun reaches a specific angle below horizon
-    public func sunAngleTime(angle: Double!, time: Double!, direction: String? = nil) -> Double {
-        let decl = sunPosition(jDate + time)["declination"]!
+    func sunAngleTime(angle: Double!, time: Double!, direction: String? = nil) -> Double {
+        let decl = sunPosition(jDate + time).declination
         let noon = midDay(time)
         
         let t = 1 / 15 * self.arccos(
@@ -709,7 +699,7 @@ public class PrayTimes {
     
     // Compute declination angle of sun and equation of time
     // Ref: http://aa.usno.navy.mil/faq/docs/SunApprox.php
-    public func sunPosition(jd: Double) -> [String: Double] {
+    func sunPosition(jd: Double) -> (declination: Double, equation: Double) {
         let D = jd - 2451545.0
         let g = fixAngle(357.529 + 0.98560028 * D)
         let q = fixAngle(280.459 + 0.98564736 * D)
@@ -720,14 +710,11 @@ public class PrayTimes {
         let eqt = q / 15.0 - fixHour(RA)
         let decl = self.arcsin(self.sin(e) * self.sin(L))
         
-        return [
-            "declination": decl,
-            "equation": eqt
-        ]
+        return (declination: decl, equation: eqt)
     }
     
     // Get sun angle for sunset/sunrise
-    public func riseSetAngle() -> Double {
+    func riseSetAngle() -> Double {
         //var earthRad = 6371009; // in meters
         //var angle = DMath.arccos(earthRad/(earthRad+ elv));
         let angle = 0.0347 * sqrt(elv) // an approximation
@@ -736,7 +723,7 @@ public class PrayTimes {
     
     // Convert Gregorian date to Julian day
     // Ref: Astronomical Algorithms by Jean Meeus
-    public func getJulian(date: NSDate) -> Double {
+    func getJulian(date: NSDate) -> Double {
         let flags: NSCalendarUnit = [.Day, .Month, .Year]
         let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
         
@@ -792,7 +779,7 @@ public class PrayTimes {
     }
     
     // Adjust times for locations in higher latitudes
-    public func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
         let nightTime = timeDiff(times[TimeName.Sunset], times[TimeName.Sunrise])
         
         times[TimeName.Imsak] = adjustHLTime(times[TimeName.Imsak],
@@ -821,7 +808,7 @@ public class PrayTimes {
     }
     
     // Adjust times for locations in higher latitudes
-    public func adjustHLTime(var time: Double!, base: Double!, angle: Double!, night: Double!, direction: String? = nil) -> Double {
+    func adjustHLTime(var time: Double!, base: Double!, angle: Double!, night: Double!, direction: String? = nil) -> Double {
         let portion = nightPortion(angle, night)
         
         let diff = direction == "ccw"
@@ -836,7 +823,7 @@ public class PrayTimes {
     }
     
     // The night portion used for adjusting times in higher latitudes
-    public func nightPortion(angle: Double!, _ night: Double!) -> Double {
+    func nightPortion(angle: Double!, _ night: Double!) -> Double {
         var portion = 1.0 / 2.0 // MidNight
         
         if highLats == ElavationMethod.AngleBased {
@@ -851,7 +838,7 @@ public class PrayTimes {
     }
     
     // Convert hours to day portions
-    public func dayPortion(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func dayPortion(var times: [TimeName: Double]) -> [TimeName: Double] {
         for item in times {
             times[item.0] = times[item.0]! / 24.0
         }
@@ -860,7 +847,7 @@ public class PrayTimes {
     }
     
     // Apply offsets to the times
-    public func tuneTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func tuneTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         for item in times {
             times[item.0] = times[item.0]! + offset[item.0]! / 60.0
         }
@@ -869,16 +856,16 @@ public class PrayTimes {
     }
     
     // Compute asr time
-    public func asrTime(time: Double!) -> Double {
+    func asrTime(time: Double!) -> Double {
         let param = getSetting(TimeName.Asr)
         let factor = asrFactor(param)
-        let decl = sunPosition(jDate + time)["declination"]!
+        let decl = sunPosition(jDate + time).declination
         let angle = -self.arccot(factor + self.tan(abs(lat - decl)))
         return sunAngleTime(angle, time: time)
     }
     
     // Get asr shadow factor
-    public func asrFactor(asrParam: AdjustmentParam) -> Double {
+    func asrFactor(asrParam: AdjustmentParam) -> Double {
         if asrParam.type == AdjustmentType.Method {
             let method = asrParam.value as! AdjustmentMethod
             
@@ -893,30 +880,30 @@ public class PrayTimes {
     //---------------------- Misc Functions -----------------------
     
     // Compute the difference between two times
-    public func timeDiff(time1: Double!, _ time2: Double!) -> Double {
+    func timeDiff(time1: Double!, _ time2: Double!) -> Double {
         return fixHour(time2 - time1);
     }
     
     //----------------- Degree-Based Math Functions -------------------
     
-    public func dtr(d: Double) -> Double { return (d * M_PI) / 180.0 }
-    public func rtd(r: Double) -> Double { return (r * 180.0) / M_PI }
+    func dtr(d: Double) -> Double { return (d * M_PI) / 180.0 }
+    func rtd(r: Double) -> Double { return (r * 180.0) / M_PI }
     
-    public func sin(d: Double) -> Double { return Darwin.sin(dtr(d)) }
-    public func cos(d: Double) -> Double { return Darwin.cos(dtr(d)) }
-    public func tan(d: Double) -> Double { return Darwin.tan(dtr(d)) }
+    func sin(d: Double) -> Double { return Darwin.sin(dtr(d)) }
+    func cos(d: Double) -> Double { return Darwin.cos(dtr(d)) }
+    func tan(d: Double) -> Double { return Darwin.tan(dtr(d)) }
     
-    public func arcsin(d: Double) -> Double { return rtd(Darwin.asin(d)) }
-    public func arccos(d: Double) -> Double { return rtd(Darwin.acos(d)) }
-    public func arctan(d: Double) -> Double { return rtd(Darwin.atan(d)) }
+    func arcsin(d: Double) -> Double { return rtd(Darwin.asin(d)) }
+    func arccos(d: Double) -> Double { return rtd(Darwin.acos(d)) }
+    func arctan(d: Double) -> Double { return rtd(Darwin.atan(d)) }
     
-    public func arccot(x: Double) -> Double { return rtd(Darwin.atan(1 / x)) }
-    public func arctan2(y: Double, _ x: Double) -> Double { return rtd(Darwin.atan2(y, x)) }
+    func arccot(x: Double) -> Double { return rtd(Darwin.atan(1 / x)) }
+    func arctan2(y: Double, _ x: Double) -> Double { return rtd(Darwin.atan2(y, x)) }
     
-    public func fixAngle(a: Double) -> Double { return fix(a, 360.0) }
-    public func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
+    func fixAngle(a: Double) -> Double { return fix(a, 360.0) }
+    func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
     
-    public func fix(a: Double, _ b: Double) -> Double {
+    func fix(a: Double, _ b: Double) -> Double {
         let a = a - b * (floor(a / b))
         return a < 0 ? a + b : a
     }
