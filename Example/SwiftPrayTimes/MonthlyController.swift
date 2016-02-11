@@ -17,7 +17,7 @@ class MonthlyController: UITableViewController {
     let juristic = "Standard"
     let coords = [37.323, -122.0527]
     let timezone = -8.0
-    let dst = true
+    let dst = false
     let endDate = NSCalendar.currentCalendar()
         .dateByAddingUnit(.Month,
             value: 1,
