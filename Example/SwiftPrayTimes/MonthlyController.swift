@@ -29,7 +29,7 @@ class MonthlyController: UITableViewController {
         super.viewDidLoad()
         
         // Create instance
-        let prayTimes = PrayTimes(
+        var prayTimes = PrayTimes(
             method: method,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
