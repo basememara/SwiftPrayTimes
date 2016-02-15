@@ -82,7 +82,7 @@ println("Isha: \(ishaTime)")
 
 import Foundation
 
-public struct PrayTimes {
+public class PrayTimes {
     
     //------------------------ Enumerations --------------------------
     
@@ -427,7 +427,7 @@ public struct PrayTimes {
     
     //-------------------- Interface Functions --------------------
     
-    public mutating func setMethod(method: String) {
+    public func setMethod(method: String) {
         // Reset settings
         settings = PrayTimes.defaultSettings
         
@@ -440,14 +440,14 @@ public struct PrayTimes {
         }
     }
     
-    public mutating func adjust(params: [AdjustmentParam]) {
+    public func adjust(params: [AdjustmentParam]) {
         for item in params {
             settings = settings.filter { $0.time != item.time } // Remove duplicate
             settings.append(item)
         }
     }
     
-    public mutating func tune(timeOffsets: [TimeName: Double]) {
+    public func tune(timeOffsets: [TimeName: Double]) {
         for item in timeOffsets {
             offset[item.0] = item.1;
         }
@@ -480,7 +480,7 @@ public struct PrayTimes {
     }
     
     // Get prayer times for a given date
-    public mutating func getTimes(
+    public func getTimes(
         coords: [Double],
         date: NSDate = NSDate(),
         timezone: Double? = nil,
@@ -555,7 +555,7 @@ public struct PrayTimes {
             }
     }
     
-    public mutating func getTimesForRange(
+    public func getTimesForRange(
         coords: [Double],
         endDate: NSDate,
         date: NSDate = NSDate(),
