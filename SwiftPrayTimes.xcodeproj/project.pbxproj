@@ -10,8 +10,8 @@
 		8BE19AC71C72D5D100D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BE19ACE1C72D5D200D4D437 /* SwiftPrayTimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE19AC31C72D5D100D4D437 /* SwiftPrayTimes.framework */; };
 		8BE19AF71C72D63400D4D437 /* SwiftPrayTimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE19AED1C72D63400D4D437 /* SwiftPrayTimes.framework */; };
-		8BE19B7D1C72DFE500D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; };
-		8BE19B7E1C72DFE500D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; };
+		8BE19B7D1C72DFE500D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BE19B7E1C72DFE500D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BE19B821C72E0F600D4D437 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
 		8BE19B831C72E0F600D4D437 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
 		8BE19B841C72E0F600D4D437 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
