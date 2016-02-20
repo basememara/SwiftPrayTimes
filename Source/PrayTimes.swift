@@ -156,6 +156,8 @@ public struct PrayTimes {
         }
         public var type: TimeName
         public var isFard = false
+        public var isCurrent = false
+        public var isNext = false
         
         var timeFormat = "12h"
         var timeSuffixes = ["am", "pm"]
@@ -218,12 +220,12 @@ public struct PrayTimes {
             
             // Handle specific prayers
             switch (type) {
-            case TimeName.Fajr:
+            case .Fajr:
                 self.abbr = "FJR"
                 self.isFard = true
-            case TimeName.Sunrise:
+            case .Sunrise:
                 self.abbr = "SHK"
-            case TimeName.Dhuhr:
+            case .Dhuhr:
                 self.abbr = "DHR"
                 self.isFard = true
                 
@@ -234,13 +236,13 @@ public struct PrayTimes {
                 if components?.weekday == 6 {
                     self.name = "Jumuah"
                 }
-            case TimeName.Asr:
+            case .Asr:
                 self.abbr = "ASR"
                 self.isFard = true
-            case TimeName.Maghrib:
+            case .Maghrib:
                 self.abbr = "MGB"
                 self.isFard = true
-            case TimeName.Isha:
+            case .Isha:
                 self.abbr = "ISH"
                 self.isFard = true
             default: break
@@ -315,36 +317,36 @@ public struct PrayTimes {
     // Calculation Methods
     let methods = [
         "MWL" : PrayerMethod("Muslim World League", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 18.0),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 17.0)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 18.0),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 17.0)
             ]),
         "ISNA": PrayerMethod("Islamic Society of North America (ISNA)", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 15.0),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 15.0)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
             ]),
         "Egypt": PrayerMethod("Egyptian General Authority of Survey", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 19.5),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 17.5)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 19.5),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 17.5)
             ]),
         "Makkah": PrayerMethod("Umm Al-Qura University, Makkah", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 18.5), // Fajr was 19 degrees before 1430 hijri
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Minute, value: 90.0)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 18.5), // Fajr was 19 degrees before 1430 hijri
+            AdjustmentParam(time: .Isha, type: .Minute, value: 90.0)
             ]),
         "Karachi": PrayerMethod("University of Islamic Sciences, Karachi", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 18.0),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 18.0)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 18.0),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 18.0)
             ]),
         "Tehran": PrayerMethod("Institute of Geophysics, University of Tehran", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 17.7),
-            AdjustmentParam(time: TimeName.Maghrib, type: AdjustmentType.Degree, value: 4.5),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 14.0),
-            AdjustmentParam(time: TimeName.Midnight, type: AdjustmentType.Method, value: AdjustmentMethod.Jafari)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 17.7),
+            AdjustmentParam(time: .Maghrib, type: .Degree, value: 4.5),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 14.0),
+            AdjustmentParam(time: .Midnight, type: .Method, value: AdjustmentMethod.Jafari)
             ]),
         "Jafari": PrayerMethod("Shia Ithna-Ashari, Leva Institute, Qum", [
-            AdjustmentParam(time: TimeName.Fajr, type: AdjustmentType.Degree, value: 16.0),
-            AdjustmentParam(time: TimeName.Maghrib, type: AdjustmentType.Degree, value: 4.0),
-            AdjustmentParam(time: TimeName.Isha, type: AdjustmentType.Degree, value: 14.0),
-            AdjustmentParam(time: TimeName.Midnight, type: AdjustmentType.Method, value: AdjustmentMethod.Jafari)
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 16.0),
+            AdjustmentParam(time: .Maghrib, type: .Degree, value: 4.0),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 14.0),
+            AdjustmentParam(time: .Midnight, type: .Method, value: AdjustmentMethod.Jafari)
             ])
     ]
     
@@ -352,32 +354,32 @@ public struct PrayTimes {
     
     static let defaultParams = [
         AdjustmentParam(
-            time: TimeName.Maghrib,
-            type: AdjustmentType.Minute,
+            time: .Maghrib,
+            type: .Minute,
             value: 0.0
         ),
         AdjustmentParam(
-            time: TimeName.Midnight,
-            type: AdjustmentType.Method,
+            time: .Midnight,
+            type: .Method,
             value: AdjustmentMethod.Standard
         )
     ]
     
     static let defaultSettings = [
-        AdjustmentParam(time: TimeName.Imsak, type: AdjustmentType.Minute, value: 10.0),
-        AdjustmentParam(time: TimeName.Dhuhr, type: AdjustmentType.Minute, value: 0.0),
-        AdjustmentParam(time: TimeName.Asr, type: AdjustmentType.Method, value: AdjustmentMethod.Standard)
+        AdjustmentParam(time: .Imsak, type: .Minute, value: 10.0),
+        AdjustmentParam(time: .Dhuhr, type: .Minute, value: 0.0),
+        AdjustmentParam(time: .Asr, type: .Method, value: AdjustmentMethod.Standard)
     ]
     
     static let defaultTimes: [TimeName: Double] = [
-        TimeName.Imsak: 5.0,
-        TimeName.Fajr: 5.0,
-        TimeName.Sunrise: 6.0,
-        TimeName.Dhuhr: 12.0,
-        TimeName.Asr: 13.0,
-        TimeName.Sunset: 18.0,
-        TimeName.Maghrib: 18.0,
-        TimeName.Isha: 18.0
+        .Imsak: 5.0,
+        .Fajr: 5.0,
+        .Sunrise: 6.0,
+        .Dhuhr: 12.0,
+        .Asr: 13.0,
+        .Sunset: 18.0,
+        .Maghrib: 18.0,
+        .Isha: 18.0
     ]
     
     // Do not change anything here; use adjust method instead
@@ -398,15 +400,15 @@ public struct PrayTimes {
     
     var numIterations = 1
     var offset: [TimeName: Double] = [
-        TimeName.Imsak: 0.0,
-        TimeName.Fajr: 0.0,
-        TimeName.Sunrise: 0.0,
-        TimeName.Dhuhr: 0.0,
-        TimeName.Asr: 0.0,
-        TimeName.Sunset: 0.0,
-        TimeName.Maghrib: 0.0,
-        TimeName.Isha: 0.0,
-        TimeName.Midnight: 0.0
+        .Imsak: 0.0,
+        .Fajr: 0.0,
+        .Sunrise: 0.0,
+        .Dhuhr: 0.0,
+        .Asr: 0.0,
+        .Sunset: 0.0,
+        .Maghrib: 0.0,
+        .Isha: 0.0,
+        .Midnight: 0.0
     ]
     
     //---------------------- Initialization -----------------------
@@ -475,7 +477,7 @@ public struct PrayTimes {
     
     public func getSettingValue(time: TimeName) -> Double {
         let setting = getSetting(time)
-        return setting.type == AdjustmentType.Minute || setting.type == AdjustmentType.Degree
+        return setting.type == .Minute || setting.type == .Degree
             ? getSetting(time).value as! Double : 0.0
     }
     
@@ -488,7 +490,7 @@ public struct PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completion: (times: [TimeName: PrayerResult]) -> Void) {
+        completion: (prayers: [PrayerResult]) -> Void) {
             lat = coords[0]
             lng = coords[1]
             elv = coords.count > 2 ? coords[2] : 0
@@ -496,17 +498,30 @@ public struct PrayTimes {
             timeFormat = format ?? timeFormat
             
             let deferredTask: () -> Void = {
-                // Create array of prayers with details
-                var result = [TimeName: PrayerResult]()
-                for (key, value) in self.computeTimes() {
-                    result[key] = PrayerResult(key, value,
+                let result = self.computeTimes().map {
+                    PrayerResult($0.0, $0.1,
                         timeFormat: self.timeFormat,
                         timeSuffixes: self.timeSuffixes,
                         ofDate: date)
+                    }.sort {
+                        $0.time < $1.time
                 }
+                let currentTime = PrayTimes.timeToDecimal()
                 
+                // Get next and current prayers
+                let next = result.filter { $0.time > currentTime }.first!.type
+                let current = result.filter { $0.type == PrayTimes.getPreviousPrayer(next) }.first!.type
+                
+                // Mark next and current prayers
+                for var item in result {
+                    if item.type == next {
+                        item.isNext = true
+                    } else if item.type == current {
+                        item.isCurrent = true
+                    }
+                }
                 // Process callback
-                completion(times: result)
+                completion(prayers: result)
             }
             
             // Calculate timezone
@@ -551,7 +566,7 @@ public struct PrayTimes {
                     } else {
                         print(error!.localizedDescription)
                     }
-                }.resume()
+                    }.resume()
             }
     }
     
@@ -566,7 +581,7 @@ public struct PrayTimes {
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         completion: (() -> Void)? = nil,
         completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void) -> Void {
-    
+            
             // Initialize variables
             var startDate = NSCalendar.currentCalendar()
                 .dateByAddingUnit(.Day,
@@ -591,15 +606,9 @@ public struct PrayTimes {
                     dst: dst,
                     dstOffset: dstOffset,
                     format: format,
-                    isLocalCoords: isLocalCoords) {
-                        times in
-                        // Pluck only times array and sort by time
-                        let sortedTimes = Array(times.values).sort {
-                            $0.time < $1.time
-                        }
-                    
+                    isLocalCoords: isLocalCoords) { prayers in
                         // Process callback
-                        completionPerDate(date: startDate, times: sortedTimes)
+                        completionPerDate(date: startDate, times: prayers)
                         
                         // Allow caller to perform action when done
                         if NSCalendar.currentCalendar().startOfDayForDate(startDate)
@@ -623,11 +632,11 @@ public struct PrayTimes {
         times = adjustTimes(times)
         
         // Add midnight time
-        let midnight = getSetting(TimeName.Midnight);
-        times[TimeName.Midnight] = midnight.type == AdjustmentType.Method
-            && (midnight.value as! AdjustmentMethod) == AdjustmentMethod.Jafari
-            ? times[TimeName.Sunset]! + timeDiff(times[TimeName.Sunset], times[TimeName.Fajr]) / 2
-            : times[TimeName.Sunset]! + timeDiff(times[TimeName.Sunset], times[TimeName.Sunrise]) / 2
+        let midnight = getSetting(.Midnight);
+        times[.Midnight] = midnight.type == .Method
+            && (midnight.value as! AdjustmentMethod) == .Jafari
+            ? times[.Sunset]! + timeDiff(times[.Sunset], times[.Fajr]) / 2
+            : times[.Sunset]! + timeDiff(times[.Sunset], times[.Sunrise]) / 2
         
         times = tuneTimes(times);
         
@@ -638,40 +647,40 @@ public struct PrayTimes {
     func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         times = dayPortion(times)
         
-        let imsak = sunAngleTime(getSettingValue(TimeName.Imsak),
-            time: times[TimeName.Imsak],
+        let imsak = sunAngleTime(getSettingValue(.Imsak),
+            time: times[.Imsak],
             direction: "ccw")
         
-        let fajr = sunAngleTime(getSettingValue(TimeName.Fajr),
-            time: times[TimeName.Fajr],
+        let fajr = sunAngleTime(getSettingValue(.Fajr),
+            time: times[.Fajr],
             direction: "ccw")
         
         let sunrise = sunAngleTime(riseSetAngle(),
-            time: times[TimeName.Sunrise],
+            time: times[.Sunrise],
             direction: "ccw")
         
-        let dhuhr = midDay(times[TimeName.Dhuhr])
+        let dhuhr = midDay(times[.Dhuhr])
         
-        let asr = asrTime(times[TimeName.Asr])
+        let asr = asrTime(times[.Asr])
         
         let sunset = sunAngleTime(riseSetAngle(),
-            time: times[TimeName.Sunset])
+            time: times[.Sunset])
         
-        let maghrib = sunAngleTime(getSettingValue(TimeName.Maghrib),
-            time: times[TimeName.Maghrib])
+        let maghrib = sunAngleTime(getSettingValue(.Maghrib),
+            time: times[.Maghrib])
         
-        let isha = sunAngleTime(getSettingValue(TimeName.Isha),
-            time: times[TimeName.Isha])
+        let isha = sunAngleTime(getSettingValue(.Isha),
+            time: times[.Isha])
         
         return [
-            TimeName.Imsak: imsak,
-            TimeName.Fajr: fajr,
-            TimeName.Sunrise: sunrise,
-            TimeName.Dhuhr: dhuhr,
-            TimeName.Asr: asr,
-            TimeName.Sunset: sunset,
-            TimeName.Maghrib: maghrib,
-            TimeName.Isha: isha
+            .Imsak: imsak,
+            .Fajr: fajr,
+            .Sunrise: sunrise,
+            .Dhuhr: dhuhr,
+            .Asr: asr,
+            .Sunset: sunset,
+            .Maghrib: maghrib,
+            .Isha: isha
         ]
     }
     
@@ -754,54 +763,54 @@ public struct PrayTimes {
             times = adjustHighLats(times);
         }
         
-        let imsak = getSetting(TimeName.Imsak)
-        if (imsak.type == AdjustmentType.Minute) {
-            times[TimeName.Imsak] = times[TimeName.Fajr]!
+        let imsak = getSetting(.Imsak)
+        if (imsak.type == .Minute) {
+            times[.Imsak] = times[.Fajr]!
                 - (imsak.value as! Double) / 60.0
         }
         
-        let maghrib = getSetting(TimeName.Maghrib)
-        if (maghrib.type == AdjustmentType.Minute) {
-            times[TimeName.Maghrib] = times[TimeName.Sunset]!
+        let maghrib = getSetting(.Maghrib)
+        if (maghrib.type == .Minute) {
+            times[.Maghrib] = times[.Sunset]!
                 + (maghrib.value as! Double) / 60.0
         }
         
-        let isha = getSetting(TimeName.Isha)
-        if (isha.type == AdjustmentType.Minute) {
-            times[TimeName.Isha] = times[TimeName.Maghrib]!
+        let isha = getSetting(.Isha)
+        if (isha.type == .Minute) {
+            times[.Isha] = times[.Maghrib]!
                 + (isha.value as! Double) / 60.0
         }
         
-        times[TimeName.Dhuhr] = times[TimeName.Dhuhr]!
-            + getSettingValue(TimeName.Dhuhr) / 60.0
+        times[.Dhuhr] = times[.Dhuhr]!
+            + getSettingValue(.Dhuhr) / 60.0
         
         return times;
     }
     
     // Adjust times for locations in higher latitudes
     func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
-        let nightTime = timeDiff(times[TimeName.Sunset], times[TimeName.Sunrise])
+        let nightTime = timeDiff(times[.Sunset], times[.Sunrise])
         
-        times[TimeName.Imsak] = adjustHLTime(times[TimeName.Imsak],
-            base: times[TimeName.Sunrise],
-            angle: getSettingValue(TimeName.Imsak),
+        times[.Imsak] = adjustHLTime(times[.Imsak],
+            base: times[.Sunrise],
+            angle: getSettingValue(.Imsak),
             night: nightTime,
             direction: "ccw")
         
-        times[TimeName.Fajr]  = adjustHLTime(times[TimeName.Fajr],
-            base: times[TimeName.Sunrise],
-            angle: getSettingValue(TimeName.Fajr),
+        times[.Fajr]  = adjustHLTime(times[.Fajr],
+            base: times[.Sunrise],
+            angle: getSettingValue(.Fajr),
             night: nightTime,
             direction: "ccw")
         
-        times[TimeName.Isha]  = adjustHLTime(times[TimeName.Isha],
-            base: times[TimeName.Sunset],
-            angle: getSettingValue(TimeName.Isha),
+        times[.Isha]  = adjustHLTime(times[.Isha],
+            base: times[.Sunset],
+            angle: getSettingValue(.Isha),
             night: nightTime)
         
-        times[TimeName.Maghrib] = adjustHLTime(times[TimeName.Maghrib],
-            base: times[TimeName.Sunset],
-            angle: getSettingValue(TimeName.Maghrib),
+        times[.Maghrib] = adjustHLTime(times[.Maghrib],
+            base: times[.Sunset],
+            angle: getSettingValue(.Maghrib),
             night: nightTime)
         
         return times;
@@ -857,7 +866,7 @@ public struct PrayTimes {
     
     // Compute asr time
     func asrTime(time: Double!) -> Double {
-        let param = getSetting(TimeName.Asr)
+        let param = getSetting(.Asr)
         let factor = asrFactor(param)
         let decl = sunPosition(jDate + time).declination
         let angle = -self.arccot(factor + self.tan(abs(lat - decl)))
@@ -866,11 +875,11 @@ public struct PrayTimes {
     
     // Get asr shadow factor
     func asrFactor(asrParam: AdjustmentParam) -> Double {
-        if asrParam.type == AdjustmentType.Method {
+        if asrParam.type == .Method {
             let method = asrParam.value as! AdjustmentMethod
             
-            return method == AdjustmentMethod.Standard ? 1
-                : method == AdjustmentMethod.Hanafi ? 2
+            return method == .Standard ? 1
+                : method == .Hanafi ? 2
                 : getSettingValue(asrParam.time)
         }
         
@@ -882,6 +891,27 @@ public struct PrayTimes {
     // Compute the difference between two times
     func timeDiff(time1: Double!, _ time2: Double!) -> Double {
         return fixHour(time2 - time1);
+    }
+    
+    static func timeToDecimal(date: NSDate = NSDate()) -> Double {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Hour, .Minute],
+            fromDate: date)
+        let hour = components.hour
+        let minutes = components.minute
+        return Double(hour) + (Double(minutes) / 60.0)
+    }
+    
+    static func getPreviousPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
+        switch time {
+        case .Fajr: return .Isha
+        case .Sunrise: return .Fajr
+        case .Dhuhr: return .Sunrise
+        case .Asr: return .Dhuhr
+        case .Maghrib: return .Asr
+        case .Isha: return .Maghrib
+        default: return .Fajr
+        }
     }
     
     //----------------- Degree-Based Math Functions -------------------

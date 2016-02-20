@@ -4,4 +4,7 @@
    <FileRef
       location = "container:SwiftPrayTimes.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SwiftPrayTimesExample/SwiftPrayTimesExample.xcodeproj">
+   </FileRef>
 </Workspace>
