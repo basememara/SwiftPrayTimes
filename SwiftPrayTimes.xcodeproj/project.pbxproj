@@ -18,6 +18,13 @@
 		8BE19B851C72E0F600D4D437 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
 		8BE19B861C72E0F600D4D437 /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
 		8BE19B881C72E19400D4D437 /* PrayTimesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B871C72E19400D4D437 /* PrayTimesTest.swift */; };
+		8BE815641C7915E1005F23CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE815631C7915E1005F23CE /* AppDelegate.swift */; };
+		8BE8156B1C7915E1005F23CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE815691C7915E1005F23CE /* Main.storyboard */; };
+		8BE8156D1C7915E1005F23CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8156C1C7915E1005F23CE /* Assets.xcassets */; };
+		8BE815701C7915E1005F23CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BE8156E1C7915E1005F23CE /* LaunchScreen.storyboard */; };
+		8BE815771C79162B005F23CE /* MonthlyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE815751C79162B005F23CE /* MonthlyController.swift */; };
+		8BE815781C79162B005F23CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE815761C79162B005F23CE /* ViewController.swift */; };
+		8BE815791C791D44005F23CE /* PrayTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE19B811C72E0F600D4D437 /* PrayTimes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +61,14 @@
 		8BE19B8A1C72E8E700D4D437 /* SwiftPrayTimes.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftPrayTimes.podspec; sourceTree = "<group>"; };
 		8BE19B8B1C72E8E700D4D437 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8BE19B8C1C72E8E700D4D437 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8BE815611C7915E1005F23CE /* SwiftPrayTimes iOSExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftPrayTimes iOSExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BE815631C7915E1005F23CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8BE8156A1C7915E1005F23CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8BE8156C1C7915E1005F23CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8BE8156F1C7915E1005F23CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8BE815711C7915E1005F23CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BE815751C79162B005F23CE /* MonthlyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyController.swift; sourceTree = "<group>"; };
+		8BE815761C79162B005F23CE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +109,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BE8155E1C7915E1005F23CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,6 +126,7 @@
 				8BE19B741C72DEF500D4D437 /* Source */,
 				8BE19AD11C72D5D200D4D437 /* SwiftPrayTimes iOSTests */,
 				8BE19AFA1C72D63400D4D437 /* SwiftPrayTimes tvOSTests */,
+				8BE815621C7915E1005F23CE /* SwiftPrayTimes iOSExample */,
 				8BE19AC41C72D5D100D4D437 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +139,7 @@
 				8BE19AE01C72D5FB00D4D437 /* SwiftPrayTimes.framework */,
 				8BE19AED1C72D63400D4D437 /* SwiftPrayTimes.framework */,
 				8BE19AF61C72D63400D4D437 /* SwiftPrayTimes tvOSTests.xctest */,
+				8BE815611C7915E1005F23CE /* SwiftPrayTimes iOSExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +181,20 @@
 				8BE19B8C1C72E8E700D4D437 /* README.md */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		8BE815621C7915E1005F23CE /* SwiftPrayTimes iOSExample */ = {
+			isa = PBXGroup;
+			children = (
+				8BE815631C7915E1005F23CE /* AppDelegate.swift */,
+				8BE815751C79162B005F23CE /* MonthlyController.swift */,
+				8BE815761C79162B005F23CE /* ViewController.swift */,
+				8BE815691C7915E1005F23CE /* Main.storyboard */,
+				8BE8156E1C7915E1005F23CE /* LaunchScreen.storyboard */,
+				8BE8156C1C7915E1005F23CE /* Assets.xcassets */,
+				8BE815711C7915E1005F23CE /* Info.plist */,
+			);
+			path = "SwiftPrayTimes iOSExample";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +317,23 @@
 			productReference = 8BE19AF61C72D63400D4D437 /* SwiftPrayTimes tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8BE815601C7915E1005F23CE /* SwiftPrayTimes iOSExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BE815721C7915E1005F23CE /* Build configuration list for PBXNativeTarget "SwiftPrayTimes iOSExample" */;
+			buildPhases = (
+				8BE8155D1C7915E1005F23CE /* Sources */,
+				8BE8155E1C7915E1005F23CE /* Frameworks */,
+				8BE8155F1C7915E1005F23CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftPrayTimes iOSExample";
+			productName = "SwiftPrayTimes iOSExample";
+			productReference = 8BE815611C7915E1005F23CE /* SwiftPrayTimes iOSExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -303,6 +358,9 @@
 					8BE19AF51C72D63400D4D437 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					8BE815601C7915E1005F23CE = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 8BE19ABB1C72D58700D4D437 /* Build configuration list for PBXProject "SwiftPrayTimes" */;
@@ -311,6 +369,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 8BE19AB71C72D58700D4D437;
 			productRefGroup = 8BE19AC41C72D5D100D4D437 /* Products */;
@@ -322,6 +381,7 @@
 				8BE19ADF1C72D5FB00D4D437 /* SwiftPrayTimes watchOS */,
 				8BE19AEC1C72D63400D4D437 /* SwiftPrayTimes tvOS */,
 				8BE19AF51C72D63400D4D437 /* SwiftPrayTimes tvOSTests */,
+				8BE815601C7915E1005F23CE /* SwiftPrayTimes iOSExample */,
 			);
 		};
 /* End PBXProject section */
@@ -359,6 +419,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BE8155F1C7915E1005F23CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE815701C7915E1005F23CE /* LaunchScreen.storyboard in Resources */,
+				8BE8156D1C7915E1005F23CE /* Assets.xcassets in Resources */,
+				8BE8156B1C7915E1005F23CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +476,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BE8155D1C7915E1005F23CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE815791C791D44005F23CE /* PrayTimes.swift in Sources */,
+				8BE815781C79162B005F23CE /* ViewController.swift in Sources */,
+				8BE815641C7915E1005F23CE /* AppDelegate.swift in Sources */,
+				8BE815771C79162B005F23CE /* MonthlyController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -420,6 +501,25 @@
 			targetProxy = 8BE19AF81C72D63400D4D437 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8BE815691C7915E1005F23CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BE8156A1C7915E1005F23CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8BE8156E1C7915E1005F23CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BE8156F1C7915E1005F23CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8BE19ABC1C72D58700D4D437 /* Debug */ = {
@@ -939,6 +1039,97 @@
 			};
 			name = Release;
 		};
+		8BE815731C7915E1005F23CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SwiftPrayTimes iOSExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftPrayTimes-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8BE815741C7915E1005F23CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "SwiftPrayTimes iOSExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftPrayTimes-iOSExample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -995,6 +1186,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8BE815721C7915E1005F23CE /* Build configuration list for PBXNativeTarget "SwiftPrayTimes iOSExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BE815731C7915E1005F23CE /* Debug */,
+				8BE815741C7915E1005F23CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -57,9 +57,11 @@ class ViewController: UITableViewController {
         guard let prayers = prayers else { return cell }
         
         let time = prayers[indexPath.row]
-        
         cell.textLabel?.text = time.name
         cell.detailTextLabel?.text = time.formattedTime
+        cell.detailTextLabel?.textColor = time.isCurrent
+            ? UIColor.redColor() : time.isNext
+            ? UIColor.orangeColor() : UIColor.grayColor()
         
         return cell
     }

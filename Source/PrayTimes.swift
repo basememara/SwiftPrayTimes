@@ -490,7 +490,7 @@ public struct PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completion: (prayers: [PrayerResult]) -> Void) {
+        completionHandler: (prayers: [PrayerResult]) -> Void) {
             lat = coords[0]
             lng = coords[1]
             elv = coords.count > 2 ? coords[2] : 0
@@ -498,7 +498,8 @@ public struct PrayTimes {
             timeFormat = format ?? timeFormat
             
             let deferredTask: () -> Void = {
-                let result = self.computeTimes().map {
+                let currentTime = PrayTimes.timeToDecimal()
+                var result = self.computeTimes().map {
                     PrayerResult($0.0, $0.1,
                         timeFormat: self.timeFormat,
                         timeSuffixes: self.timeSuffixes,
@@ -506,22 +507,22 @@ public struct PrayTimes {
                     }.sort {
                         $0.time < $1.time
                 }
-                let currentTime = PrayTimes.timeToDecimal()
                 
-                // Get next and current prayers
-                let next = result.filter { $0.time > currentTime }.first!.type
-                let current = result.filter { $0.type == PrayTimes.getPreviousPrayer(next) }.first!.type
-                
-                // Mark next and current prayers
-                for var item in result {
-                    if item.type == next {
-                        item.isNext = true
-                    } else if item.type == current {
-                        item.isCurrent = true
+                // Assign next and current prayers
+                if let nextType = result.filter({ $0.time > currentTime && $0.isFard }).first?.type {
+                    let currentType = PrayTimes.getPreviousPrayer(nextType)
+                    
+                    for (index, item) in result.enumerate() {
+                        if item.type == nextType {
+                            result[index].isNext = true
+                        } else if item.type == currentType {
+                            result[index].isCurrent = true
+                        }
                     }
                 }
+                
                 // Process callback
-                completion(prayers: result)
+                completionHandler(prayers: result)
             }
             
             // Calculate timezone
@@ -579,7 +580,7 @@ public struct PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
-        completion: (() -> Void)? = nil,
+        completionHandler: (() -> Void)? = nil,
         completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void) -> Void {
             
             // Initialize variables
@@ -614,8 +615,8 @@ public struct PrayTimes {
                         if NSCalendar.currentCalendar().startOfDayForDate(startDate)
                             .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
                                 // Process callback
-                                if let callback = completion {
-                                    callback()
+                                if let completion = completionHandler {
+                                    completion()
                                 }
                         }
                 }

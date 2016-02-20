@@ -8,7 +8,7 @@
         <!--Pray Times-->
         <scene sceneID="acS-d2-avB">
             <objects>
-                <tableViewController id="euE-DM-FcU" customClass="ViewController" customModule="SwiftPrayTimesExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="euE-DM-FcU" customClass="ViewController" customModule="SwiftPrayTimes_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FDi-dg-YkA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,7 +61,7 @@
         <!--Pray Times (Series)-->
         <scene sceneID="TLR-94-0Wn">
             <objects>
-                <tableViewController id="1sX-BE-2Fa" customClass="MonthlyController" customModule="SwiftPrayTimesExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1sX-BE-2Fa" customClass="MonthlyController" customModule="SwiftPrayTimes_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GET-rT-Fxd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
