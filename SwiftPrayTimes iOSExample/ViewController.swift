@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftPrayTimes
 
 class ViewController: UITableViewController {
     
@@ -46,9 +45,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let prayers = prayers else { return 0 }
-        
-        return prayers.count
+        return prayers?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
