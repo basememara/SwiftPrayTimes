@@ -519,6 +519,15 @@ public struct PrayTimes {
                             result[index].isCurrent = true
                         }
                     }
+                } else {
+                    // Handle current and next prayers if times fall tomorrow
+                    for (index, item) in result.enumerate() {
+                        if item.type == .Fajr {
+                            result[index].isNext = true
+                        } else if item.type == .Isha {
+                            result[index].isCurrent = true
+                        }
+                    }
                 }
                 
                 // Process callback
