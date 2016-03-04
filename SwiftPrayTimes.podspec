@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "SwiftPrayTimes"
-    s.version          = "1.3.4"
+    s.version          = "1.3.5"
     s.summary          = "Pray Times provides a set of handy functions to calculate prayer times for any location around the world"
     s.description      = <<-DESC
                             Pray Times provides a set of handy functions to calculate prayer times for any location around the world,
@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
 
     s.requires_arc = true
 
-    s.source_files = "Source/**/*.{h,swift}"
+    s.source_files = "Sources/**/*.{h,swift}"
 end
