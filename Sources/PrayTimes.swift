@@ -490,6 +490,7 @@ public struct PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
+        onlyEssentials: Bool = false,
         completionHandler: (prayers: [PrayerResult]) -> Void) {
             lat = coords[0]
             lng = coords[1]
@@ -531,7 +532,9 @@ public struct PrayTimes {
                 }
                 
                 // Process callback
-                completionHandler(prayers: result)
+                completionHandler(prayers: onlyEssentials
+                    ? result.filter { $0.isFard || $0.type == .Sunrise }
+                    : result)
             }
             
             // Calculate timezone
@@ -589,9 +592,9 @@ public struct PrayTimes {
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
+        onlyEssentials: Bool = false,
         completionHandler: (() -> Void)? = nil,
         completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void) -> Void {
-            
             // Initialize variables
             var startDate = NSCalendar.currentCalendar()
                 .dateByAddingUnit(.Day,
@@ -616,7 +619,8 @@ public struct PrayTimes {
                     dst: dst,
                     dstOffset: dstOffset,
                     format: format,
-                    isLocalCoords: isLocalCoords) { prayers in
+                    isLocalCoords: isLocalCoords,
+                    onlyEssentials: onlyEssentials) { prayers in
                         // Process callback
                         completionPerDate(date: startDate, times: prayers)
                         
