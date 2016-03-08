@@ -510,23 +510,28 @@ public struct PrayTimes {
                 }
                 
                 // Assign next and current prayers
-                if let nextType = result.filter({ $0.time > currentTime && $0.isFard }).first?.type {
-                    let currentType = PrayTimes.getPreviousPrayer(nextType)
-                    
-                    for (index, item) in result.enumerate() {
-                        if item.type == nextType {
-                            result[index].isNext = true
-                        } else if item.type == currentType {
-                            result[index].isCurrent = true
+                if let nextType = result.filter({ $0.time > currentTime
+                    && ($0.isFard || $0.type == .Sunrise) }).first?.type {
+                        let currentType = PrayTimes.getPreviousPrayer(nextType)
+                        
+                        for (index, item) in result.enumerate() {
+                            switch item.type {
+                            case currentType:
+                                result[index].isCurrent = true
+                            case nextType:
+                                result[index].isNext = true
+                            default: break
+                            }
                         }
-                    }
                 } else {
                     // Handle current and next prayers if times fall tomorrow
                     for (index, item) in result.enumerate() {
-                        if item.type == .Fajr {
+                        switch item.type {
+                        case .Fajr:
                             result[index].isNext = true
-                        } else if item.type == .Isha {
+                        case .Isha:
                             result[index].isCurrent = true
+                        default: break
                         }
                     }
                 }
@@ -916,7 +921,7 @@ public struct PrayTimes {
         return Double(hour) + (Double(minutes) / 60.0)
     }
     
-    static func getPreviousPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
+    public static func getPreviousPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
         switch time {
         case .Fajr: return .Isha
         case .Sunrise: return .Fajr
@@ -925,6 +930,18 @@ public struct PrayTimes {
         case .Maghrib: return .Asr
         case .Isha: return .Maghrib
         default: return .Fajr
+        }
+    }
+    
+    public static func getNextPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
+        switch time {
+        case .Fajr: return .Sunrise
+        case .Sunrise: return .Dhuhr
+        case .Dhuhr: return .Asr
+        case .Asr: return .Maghrib
+        case .Maghrib: return .Isha
+        case .Isha: return .Fajr
+        default: return .Isha
         }
     }
     
