@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B3F4BBD1C9204C80071950B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F4BBC1C9204C80071950B /* Extensions.swift */; };
 		8BE19AC71C72D5D100D4D437 /* SwiftPrayTimes.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BE19ACE1C72D5D200D4D437 /* SwiftPrayTimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE19AC31C72D5D100D4D437 /* SwiftPrayTimes.framework */; };
 		8BE19AF71C72D63400D4D437 /* SwiftPrayTimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE19AED1C72D63400D4D437 /* SwiftPrayTimes.framework */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B3F4BBC1C9204C80071950B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BE19AC31C72D5D100D4D437 /* SwiftPrayTimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftPrayTimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE19AC61C72D5D100D4D437 /* SwiftPrayTimes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPrayTimes.h; sourceTree = "<group>"; };
 		8BE19ACD1C72D5D200D4D437 /* SwiftPrayTimes iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftPrayTimes iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 				8BE815631C7915E1005F23CE /* AppDelegate.swift */,
 				8BE815751C79162B005F23CE /* MonthlyController.swift */,
 				8BE815761C79162B005F23CE /* ViewController.swift */,
+				8B3F4BBC1C9204C80071950B /* Extensions.swift */,
 				8BE815691C7915E1005F23CE /* Main.storyboard */,
 				8BE8156E1C7915E1005F23CE /* LaunchScreen.storyboard */,
 				8BE8156C1C7915E1005F23CE /* Assets.xcassets */,
@@ -480,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3F4BBD1C9204C80071950B /* Extensions.swift in Sources */,
 				8BE815791C791D44005F23CE /* PrayTimes.swift in Sources */,
 				8BE815781C79162B005F23CE /* ViewController.swift in Sources */,
 				8BE815641C7915E1005F23CE /* AppDelegate.swift in Sources */,

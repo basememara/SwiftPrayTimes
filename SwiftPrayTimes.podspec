@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "SwiftPrayTimes"
-    s.version          = "1.3.7"
+    s.version          = "1.4.0"
     s.summary          = "Pray Times provides a set of handy functions to calculate prayer times for any location around the world"
     s.description      = <<-DESC
                             Pray Times provides a set of handy functions to calculate prayer times for any location around the world,

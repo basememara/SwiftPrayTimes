@@ -499,7 +499,6 @@ public struct PrayTimes {
             timeFormat = format ?? timeFormat
             
             let deferredTask: () -> Void = {
-                let currentTime = PrayTimes.timeToDecimal()
                 var result = self.computeTimes().map {
                     PrayerResult($0.0, $0.1,
                         timeFormat: self.timeFormat,
@@ -510,7 +509,7 @@ public struct PrayTimes {
                 }
                 
                 // Assign next and current prayers
-                if let nextType = result.filter({ $0.time > currentTime
+                if let nextType = result.filter({ $0.date.compare(date) == .OrderedDescending
                     && ($0.isFard || $0.type == .Sunrise) }).first?.type {
                         let currentType = PrayTimes.getPreviousPrayer(nextType)
                         
@@ -532,6 +531,30 @@ public struct PrayTimes {
                         case .Isha:
                             result[index].isCurrent = true
                         default: break
+                        }
+                    }
+                }
+                
+                // Increment dates for past prayers if applicable
+                for (index, item) in result.enumerate() {
+                    if item.date.compare(date) == .OrderedAscending {
+                        if !item.isCurrent {
+                            result[index].date = NSCalendar.currentCalendar()
+                                .dateByAddingUnit(.Day,
+                                    value: 1,
+                                    toDate: result[index].date,
+                                    options: NSCalendarOptions(rawValue: 0)
+                                )!
+                        }
+                    } else {
+                        // Move Isha to previous day if middle of the night
+                        if item.isCurrent && item.type == .Isha {
+                            result[index].date = NSCalendar.currentCalendar()
+                                .dateByAddingUnit(.Day,
+                                    value: -1,
+                                    toDate: result[index].date,
+                                    options: NSCalendarOptions(rawValue: 0)
+                                )!
                         }
                     }
                 }

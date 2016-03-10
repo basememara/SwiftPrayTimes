@@ -17,6 +17,7 @@ class MonthlyController: UITableViewController {
     let coords = [43.7, -79.4]
     let timezone = -5.0
     let dst = false
+    let date = NSDate(fromString: "2016/03/10 14:00")!
     let endDate = NSCalendar.currentCalendar()
         .dateByAddingUnit(.Month,
             value: 1,
@@ -34,7 +35,12 @@ class MonthlyController: UITableViewController {
         )
         
         // Get prayer times for date range and reload table
-        prayTimes.getTimesForRange(coords, endDate: endDate, timezone: timezone, dst: dst,
+        prayTimes.getTimesForRange(coords,
+            endDate: endDate,
+            date: date, // Optional
+            timezone: timezone,
+            dst: dst,
+            onlyEssentials: true,
             completionHandler: { series in self.tableView.reloadData() }) {
                 date, times in
                 self.prayerSeries.append(PrayTimes.PrayerResultSeries(date: date, times: times))
@@ -48,19 +54,23 @@ class MonthlyController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
         let data = prayerSeries[indexPath.row]
+        let formatter = NSDateFormatter()
         var output = ""
         
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMMM dd, yyyy"
-        
-        for item in data.times.filter({ $0.isFard || $0.type == PrayTimes.TimeName.Sunrise }) {
-            let name = Array(item.abbr.characters)[0]
+        for item in data.times {
             let time = item.formattedTime.componentsSeparatedByString(" ")[0]
             
-            output += "(\(name)) \(time) "
+            // Display current and next indicators
+            let status = item.isCurrent ? "c" : item.isNext ? "n" : ""
+            
+            // Place date of prayer next to time
+            formatter.dateFormat = "dd"
+            output += "\(time)-\(formatter.stringFromDate(item.date))\(status), "
         }
         
+        formatter.dateFormat = "MMMM dd, yyyy h:mm a"
         cell.textLabel?.text = formatter.stringFromDate(data.date)
+        
         cell.detailTextLabel?.text = output
         
         return cell
