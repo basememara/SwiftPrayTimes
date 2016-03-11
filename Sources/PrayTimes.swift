@@ -151,6 +151,7 @@ public struct PrayTimes {
         public var abbr: String = ""
         public var time: Double = 0
         public var date: NSDate = NSDate()
+        public var coordinates: [Double]?
         public var formattedTime: String {
             get { return getFormattedTime() }
         }
@@ -163,90 +164,95 @@ public struct PrayTimes {
         var timeSuffixes = ["am", "pm"]
         var invalidTime =  "-----"
         
-        public init(_ type: TimeName, _ time: Double, timeFormat: String? = nil, timeSuffixes: [String]? = nil, var ofDate: NSDate = NSDate()) {
-            self.time = time
-            self.type = type
-            self.name = type.getName()
-            
-            if let value = timeFormat {
-                self.timeFormat = value
-            }
-            
-            if let value = timeSuffixes {
-                self.timeSuffixes = value
-            }
-            
-            // Handle times after midnight
-            if self.time > 24 {
-                // Increment day
-                ofDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.Day,
-                        value: 1,
-                        toDate: ofDate,
-                        options: NSCalendarOptions(rawValue: 0)
-                    )!
-            }
-            
-            // Convert time to full date
-            var timeComponents = PrayerResult.getTimeComponents(self.time)
-            
-            // Check if minutes spills to next hour
-            if timeComponents[1] >= 60 {
-                // Increment hour
-                timeComponents[0] += 1
-                timeComponents[1] -= 60
-            }
-            
-            // Check if hour spills to next day
-            if timeComponents[0] >= 24 {
-                // Increment day
-                ofDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.Day,
-                        value: 1,
-                        toDate: ofDate,
-                        options: NSCalendarOptions(rawValue: 0)
-                    )!
+        public init(_ type: TimeName, _ time: Double,
+            timeFormat: String? = nil,
+            timeSuffixes: [String]? = nil,
+            var ofDate: NSDate = NSDate(),
+            coordinates: [Double]? = nil) {
+                self.time = time
+                self.type = type
+                self.name = type.getName()
+                self.coordinates = coordinates
                 
-                timeComponents[0] -= 24
-            }
-            
-            self.date = NSCalendar.currentCalendar()
-                .dateBySettingHour(timeComponents[0],
-                    minute: timeComponents[1],
-                    second: 0,
-                    ofDate: ofDate,
-                    options: []
-                )!
-            
-            // Handle specific prayers
-            switch (type) {
-            case .Fajr:
-                self.abbr = "FJR"
-                self.isFard = true
-            case .Sunrise:
-                self.abbr = "SHK"
-            case .Dhuhr:
-                self.abbr = "DHR"
-                self.isFard = true
-                
-                // Handle Friday prayer
-                let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-                let flags = NSCalendarUnit.Weekday
-                let components = calendar?.components(flags, fromDate: date)
-                if components?.weekday == 6 {
-                    self.name = "Jumuah"
+                if let value = timeFormat {
+                    self.timeFormat = value
                 }
-            case .Asr:
-                self.abbr = "ASR"
-                self.isFard = true
-            case .Maghrib:
-                self.abbr = "MGB"
-                self.isFard = true
-            case .Isha:
-                self.abbr = "ISH"
-                self.isFard = true
-            default: break
-            }
+                
+                if let value = timeSuffixes {
+                    self.timeSuffixes = value
+                }
+                
+                // Handle times after midnight
+                if self.time > 24 {
+                    // Increment day
+                    ofDate = NSCalendar.currentCalendar()
+                        .dateByAddingUnit(.Day,
+                            value: 1,
+                            toDate: ofDate,
+                            options: NSCalendarOptions(rawValue: 0)
+                        )!
+                }
+                
+                // Convert time to full date
+                var timeComponents = PrayerResult.getTimeComponents(self.time)
+                
+                // Check if minutes spills to next hour
+                if timeComponents[1] >= 60 {
+                    // Increment hour
+                    timeComponents[0] += 1
+                    timeComponents[1] -= 60
+                }
+                
+                // Check if hour spills to next day
+                if timeComponents[0] >= 24 {
+                    // Increment day
+                    ofDate = NSCalendar.currentCalendar()
+                        .dateByAddingUnit(.Day,
+                            value: 1,
+                            toDate: ofDate,
+                            options: NSCalendarOptions(rawValue: 0)
+                        )!
+                    
+                    timeComponents[0] -= 24
+                }
+                
+                self.date = NSCalendar.currentCalendar()
+                    .dateBySettingHour(timeComponents[0],
+                        minute: timeComponents[1],
+                        second: 0,
+                        ofDate: ofDate,
+                        options: []
+                    )!
+                
+                // Handle specific prayers
+                switch (type) {
+                case .Fajr:
+                    self.abbr = "FJR"
+                    self.isFard = true
+                case .Sunrise:
+                    self.abbr = "SHK"
+                case .Dhuhr:
+                    self.abbr = "DHR"
+                    self.isFard = true
+                    
+                    // Handle Friday prayer
+                    let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+                    let flags = NSCalendarUnit.Weekday
+                    let components = calendar?.components(flags, fromDate: date)
+                    if components?.weekday == 6 {
+                        self.name = "Jumuah"
+                    }
+                case .Asr:
+                    self.abbr = "ASR"
+                    self.isFard = true
+                case .Maghrib:
+                    self.abbr = "MGB"
+                    self.isFard = true
+                case .Isha:
+                    self.abbr = "ISH"
+                    self.isFard = true
+                default: break
+                }
         }
         
         // Convert float time to the given format (see timeFormats)
