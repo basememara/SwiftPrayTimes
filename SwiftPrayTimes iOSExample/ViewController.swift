@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
     let juristic = "Standard"
     let coords = [43.7, -79.4]
     let timezone = -5.0
-    let dst = false
+    let dst = true
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     

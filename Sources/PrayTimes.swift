@@ -322,7 +322,7 @@ public struct PrayTimes {
     
     // Calculation Methods
     let methods = [
-        "MWL" : PrayerMethod("Muslim World League", [
+        "MWL": PrayerMethod("Muslim World League", [
             AdjustmentParam(time: .Fajr, type: .Degree, value: 18.0),
             AdjustmentParam(time: .Isha, type: .Degree, value: 17.0)
             ]),
@@ -353,6 +353,10 @@ public struct PrayTimes {
             AdjustmentParam(time: .Maghrib, type: .Degree, value: 4.0),
             AdjustmentParam(time: .Isha, type: .Degree, value: 14.0),
             AdjustmentParam(time: .Midnight, type: .Method, value: AdjustmentMethod.Jafari)
+            ]),
+        "UOIF": PrayerMethod("Union of Islamic Organizations of France", [
+            AdjustmentParam(time: .Fajr, type: .Degree, value: 12.0),
+            AdjustmentParam(time: .Isha, type: .Degree, value: 12.0)
             ])
     ]
     
