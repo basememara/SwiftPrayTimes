@@ -15,7 +15,7 @@ class ViewController: UITableViewController {
     let method = "ISNA"
     let juristic = "Standard"
     let coords = [43.7, -79.4]
-    let timezone = -5.0
+    let timeZone = -5.0
     let dst = true
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -32,7 +32,7 @@ class ViewController: UITableViewController {
         activityIndicator.startAnimating()
         
         // Retrieve prayer times
-        prayTimes.getTimes(coords, timezone: timezone, dst: dst) {
+        prayTimes.getTimes(coords, timeZone: timeZone, dst: dst) {
             prayers in
             
             self.prayers = prayers

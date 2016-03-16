@@ -14,10 +14,12 @@ class MonthlyController: UITableViewController {
     
     let method = "ISNA"
     let juristic = "Standard"
-    let coords = [43.7, -79.4]
-    let timezone = -5.0
-    let dst = false
-    let date = NSDate(fromString: "2016/03/10 14:00")!
+    let coords = [43.7, -79.4] // Toronto
+    let timeZone = -5.0 // Toronto
+    //let coords = [33.9733, -118.2487] // Los Angeles
+    //let timeZone = -8.0 // Los Angeles
+    let dst = true
+    let date = NSDate(fromString: "2016/03/16 14:00")!
     let endDate = NSCalendar.currentCalendar()
         .dateByAddingUnit(.Month,
             value: 1,
@@ -38,10 +40,10 @@ class MonthlyController: UITableViewController {
         prayTimes.getTimesForRange(coords,
             endDate: endDate,
             date: date, // Optional
-            timezone: timezone,
+            timeZone: timeZone,
             dst: dst,
             onlyEssentials: true,
-            completionHandler: { series in self.tableView.reloadData() }) {
+            completionHandler: { self.tableView.reloadData() }) {
                 date, times in
                 self.prayerSeries.append(PrayTimes.PrayerResultSeries(date: date, times: times))
             }

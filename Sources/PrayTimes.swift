@@ -147,32 +147,45 @@ public struct PrayTimes {
     }
     
     public struct PrayerResult {
-        public var name: String = ""
-        public var abbr: String = ""
-        public var time: Double = 0
-        public var date: NSDate = NSDate()
-        public var coordinates: [Double]?
-        public var formattedTime: String {
-            get { return getFormattedTime() }
-        }
-        public var type: TimeName
-        public var isFard = false
-        public var isCurrent = false
-        public var isNext = false
-        
         var timeFormat = "12h"
         var timeSuffixes = ["am", "pm"]
         var invalidTime =  "-----"
         
-        public init(_ type: TimeName, _ time: Double,
+        public var name: String
+        public var type: TimeName
+        public var time: Double
+        public var date: NSDate
+        public var requestDate: NSDate
+        public var coordinates: [Double]?
+        public var timeZone: Double?
+        public var abbr = ""
+        public var isFard = false
+        public var isCurrent = false
+        public var isNext = false
+        
+        public var formattedTime: String {
+            get { return getFormattedTime() }
+        }
+        
+        public init(
+            _ type: TimeName,
+            _ time: Double,
+            date: NSDate = NSDate(),
+            requestDate: NSDate = NSDate(),
+            coordinates: [Double]? = nil,
+            timeZone: Double? = nil,
             timeFormat: String? = nil,
-            timeSuffixes: [String]? = nil,
-            var ofDate: NSDate = NSDate(),
-            coordinates: [Double]? = nil) {
-                self.time = time
-                self.type = type
+            timeSuffixes: [String]? = nil) {
                 self.name = type.getName()
+                self.type = type
+                self.time = time
+                self.date = date
+                self.requestDate = requestDate
                 self.coordinates = coordinates
+                
+                if let value = timeZone {
+                    self.timeZone = value
+                }
                 
                 if let value = timeFormat {
                     self.timeFormat = value
@@ -185,16 +198,16 @@ public struct PrayTimes {
                 // Handle times after midnight
                 if self.time > 24 {
                     // Increment day
-                    ofDate = NSCalendar.currentCalendar()
+                    self.date = NSCalendar.currentCalendar()
                         .dateByAddingUnit(.Day,
                             value: 1,
-                            toDate: ofDate,
+                            toDate: self.date,
                             options: NSCalendarOptions(rawValue: 0)
                         )!
                 }
                 
                 // Convert time to full date
-                var timeComponents = PrayerResult.getTimeComponents(self.time)
+                var timeComponents = PrayTimes.getTimeComponents(self.time)
                 
                 // Check if minutes spills to next hour
                 if timeComponents[1] >= 60 {
@@ -206,10 +219,10 @@ public struct PrayTimes {
                 // Check if hour spills to next day
                 if timeComponents[0] >= 24 {
                     // Increment day
-                    ofDate = NSCalendar.currentCalendar()
+                    self.date = NSCalendar.currentCalendar()
                         .dateByAddingUnit(.Day,
                             value: 1,
-                            toDate: ofDate,
+                            toDate: self.date,
                             options: NSCalendarOptions(rawValue: 0)
                         )!
                     
@@ -220,7 +233,7 @@ public struct PrayTimes {
                     .dateBySettingHour(timeComponents[0],
                         minute: timeComponents[1],
                         second: 0,
-                        ofDate: ofDate,
+                        ofDate: self.date,
                         options: []
                     )!
                 
@@ -268,43 +281,17 @@ public struct PrayTimes {
                 return "\(time)"
             }
             
-            let timeComponents = PrayerResult.getTimeComponents(time)
+            let timeComponents = PrayTimes.getTimeComponents(time)
             let hours = timeComponents[0]
             let minutes = timeComponents[1]
             
             let suffix = format == "12h" && suffixes!.count > 0 ? (hours < 12 ? suffixes![0] : suffixes![1]) : ""
-            let hour = format == "24h" ? PrayerResult.twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
+            let hour = format == "24h" ? PrayTimes.twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
             
-            let output = hour + ":" + PrayerResult.twoDigitsFormat(minutes)
+            let output = hour + ":" + PrayTimes.twoDigitsFormat(minutes)
                 + (suffix != "" ? " " + suffix : "")
             
             return output
-        }
-        
-        // Add a leading 0 if necessary
-        static func twoDigitsFormat(num: Int!) -> String {
-            return num < 10 ? "0\(num)" : "\(num)"
-        }
-        
-        static func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
-        
-        static func fix(a: Double, _ b: Double) -> Double {
-            let a = a - b * (floor(a / b))
-            return a < 0 ? a + b : a
-        }
-        
-        static func getTimeComponents(time: Double) -> [Int] {
-            let roundedTime = fixHour(time + 0.5 / 60) // Add 0.5 minutes to round
-            var hours = floor(roundedTime)
-            var minutes = round((roundedTime - hours) * 60.0)
-            
-            // Handle scenario when minutes is rounded to 60
-            if minutes > 59 {
-                hours++
-                minutes = 0
-            }
-            
-            return [Int(hours), Int(minutes)]
         }
     }
     
@@ -493,27 +480,30 @@ public struct PrayTimes {
     
     // Get prayer times for a given date
     public mutating func getTimes(
-        coords: [Double],
+        coordinates: [Double],
         date: NSDate = NSDate(),
-        timezone: Double? = nil,
+        timeZone: Double? = nil,
         dst: Bool = false,
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
         completionHandler: (prayers: [PrayerResult]) -> Void) {
-            lat = coords[0]
-            lng = coords[1]
-            elv = coords.count > 2 ? coords[2] : 0
-            jDate = getJulian(date) - lng / (15 * 24)
+            lat = coordinates[0]
+            lng = coordinates[1]
+            elv = coordinates.count > 2 ? coordinates[2] : 0
+            jDate = PrayTimes.getJulian(date) - lng / (15 * 24)
             timeFormat = format ?? timeFormat
             
             let deferredTask: () -> Void = {
                 var result = self.computeTimes().map {
                     PrayerResult($0.0, $0.1,
+                        date: date,
+                        requestDate: date,
+                        coordinates: coordinates,
+                        timeZone: self.timeZone,
                         timeFormat: self.timeFormat,
-                        timeSuffixes: self.timeSuffixes,
-                        ofDate: date)
+                        timeSuffixes: self.timeSuffixes)
                     }.sort {
                         $0.time < $1.time
                 }
@@ -576,8 +566,8 @@ public struct PrayTimes {
             }
             
             // Calculate timezone
-            if let tz = timezone {
-                timeZone = tz
+            if let tz = timeZone {
+                self.timeZone = tz
                 
                 // Factor in daylight if applicable
                 if dst {
@@ -622,10 +612,10 @@ public struct PrayTimes {
     }
     
     public mutating func getTimesForRange(
-        coords: [Double],
+        coordinates: [Double],
         endDate: NSDate,
         date: NSDate = NSDate(),
-        timezone: Double? = nil,
+        timeZone: Double? = nil,
         dst: Bool = false,
         dstOffset: Int = 3600,
         format: String? = nil,
@@ -651,9 +641,9 @@ public struct PrayTimes {
                     )!
                 
                 // Retrieve prayer times for day
-                getTimes(coords,
+                getTimes(coordinates,
                     date: startDate,
-                    timezone: timezone,
+                    timeZone: timeZone,
                     dst: dst,
                     dstOffset: dstOffset,
                     format: format,
@@ -676,7 +666,6 @@ public struct PrayTimes {
     
     //---------------------- Compute Prayer Times -----------------------
     
-    
     // Compute prayer times
     func computeTimes() -> [TimeName: Double] {
         var times = computePrayerTimes(PrayTimes.defaultTimes)
@@ -687,8 +676,8 @@ public struct PrayTimes {
         let midnight = getSetting(.Midnight);
         times[.Midnight] = midnight.type == .Method
             && (midnight.value as! AdjustmentMethod) == .Jafari
-            ? times[.Sunset]! + timeDiff(times[.Sunset], times[.Fajr]) / 2
-            : times[.Sunset]! + timeDiff(times[.Sunset], times[.Sunrise]) / 2
+            ? times[.Sunset]! + PrayTimes.timeDiff(times[.Sunset], times[.Fajr]) / 2
+            : times[.Sunset]! + PrayTimes.timeDiff(times[.Sunset], times[.Sunrise]) / 2
         
         times = tuneTimes(times);
         
@@ -697,7 +686,7 @@ public struct PrayTimes {
     
     // Compute prayer times at given julian date
     func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
-        times = dayPortion(times)
+        times = PrayTimes.dayPortion(times)
         
         let imsak = sunAngleTime(getSettingValue(.Imsak),
             time: times[.Imsak],
@@ -738,40 +727,23 @@ public struct PrayTimes {
     
     //---------------------- Calculation Functions -----------------------
     
-    
     // Compute mid-day time
     func midDay(time: Double!) -> Double {
-        let eqt = sunPosition(jDate + time).equation
-        let noon = fixHour(12.0 - eqt)
+        let eqt = PrayTimes.sunPosition(jDate + time).equation
+        let noon = PrayTimes.fixHour(12.0 - eqt)
         return noon
     }
     
     // Compute the time at which sun reaches a specific angle below horizon
     func sunAngleTime(angle: Double!, time: Double!, direction: String? = nil) -> Double {
-        let decl = sunPosition(jDate + time).declination
+        let decl = PrayTimes.sunPosition(jDate + time).declination
         let noon = midDay(time)
         
-        let t = 1 / 15 * self.arccos(
-            (-self.sin(angle) - self.sin(decl) * self.sin(lat))
-                / (self.cos(decl) * self.cos(lat)))
+        let t = 1 / 15 * PrayTimes.arccos(
+            (-PrayTimes.sin(angle) - PrayTimes.sin(decl) * PrayTimes.sin(lat))
+                / (PrayTimes.cos(decl) * PrayTimes.cos(lat)))
         
         return noon + (direction == "ccw" ? -t : t)
-    }
-    
-    // Compute declination angle of sun and equation of time
-    // Ref: http://aa.usno.navy.mil/faq/docs/SunApprox.php
-    func sunPosition(jd: Double) -> (declination: Double, equation: Double) {
-        let D = jd - 2451545.0
-        let g = fixAngle(357.529 + 0.98560028 * D)
-        let q = fixAngle(280.459 + 0.98564736 * D)
-        let L = fixAngle(q + 1.915 * self.sin(g) + 0.020 * self.sin(2 * g))
-        let e = 23.439 - 0.00000036 * D
-        
-        let RA = self.arctan2(self.cos(e) * self.sin(L), self.cos(L)) / 15.0
-        let eqt = q / 15.0 - fixHour(RA)
-        let decl = self.arcsin(self.sin(e) * self.sin(L))
-        
-        return (declination: decl, equation: eqt)
     }
     
     // Get sun angle for sunset/sunrise
@@ -780,28 +752,6 @@ public struct PrayTimes {
         //var angle = DMath.arccos(earthRad/(earthRad+ elv));
         let angle = 0.0347 * sqrt(elv) // an approximation
         return 0.833 + angle
-    }
-    
-    // Convert Gregorian date to Julian day
-    // Ref: Astronomical Algorithms by Jean Meeus
-    func getJulian(date: NSDate) -> Double {
-        let flags: NSCalendarUnit = [.Day, .Month, .Year]
-        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
-        
-        if components.month <= 2 {
-            components.year -= 1
-            components.month += 12
-        }
-        
-        let A = floor(Double(components.year) / Double(100));
-        let B = 2 - A + floor(A / Double(4));
-        let C = floor(Double(365.25) * Double(components.year + 4716))
-        let D = floor(Double(30.6001) * Double(components.month + 1))
-        let E = Double(components.day) + B - 1524.5
-        
-        let JD = C + D + E
-        
-        return JD
     }
     
     // Adjust times
@@ -841,7 +791,7 @@ public struct PrayTimes {
     
     // Adjust times for locations in higher latitudes
     func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
-        let nightTime = timeDiff(times[.Sunset], times[.Sunrise])
+        let nightTime = PrayTimes.timeDiff(times[.Sunset], times[.Sunrise])
         
         times[.Imsak] = adjustHLTime(times[.Imsak],
             base: times[.Sunrise],
@@ -873,8 +823,8 @@ public struct PrayTimes {
         let portion = nightPortion(angle, night)
         
         let diff = direction == "ccw"
-            ? timeDiff(time, base)
-            : timeDiff(base, time)
+            ? PrayTimes.timeDiff(time, base)
+            : PrayTimes.timeDiff(base, time)
         
         if (time.isNaN || diff > portion) {
             time = base + (direction == "ccw" ? -portion : portion)
@@ -898,15 +848,6 @@ public struct PrayTimes {
         return portion * night;
     }
     
-    // Convert hours to day portions
-    func dayPortion(var times: [TimeName: Double]) -> [TimeName: Double] {
-        for item in times {
-            times[item.0] = times[item.0]! / 24.0
-        }
-        
-        return times
-    }
-    
     // Apply offsets to the times
     func tuneTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
         for item in times {
@@ -920,8 +861,8 @@ public struct PrayTimes {
     func asrTime(time: Double!) -> Double {
         let param = getSetting(.Asr)
         let factor = asrFactor(param)
-        let decl = sunPosition(jDate + time).declination
-        let angle = -self.arccot(factor + self.tan(abs(lat - decl)))
+        let decl = PrayTimes.sunPosition(jDate + time).declination
+        let angle = -PrayTimes.arccot(factor + PrayTimes.tan(abs(lat - decl)))
         return sunAngleTime(angle, time: time)
     }
     
@@ -938,10 +879,83 @@ public struct PrayTimes {
         return getSettingValue(asrParam.time);
     }
     
-    //---------------------- Misc Functions -----------------------
+    //---------------------- Static Functions -----------------------
+    
+    // Convert hours to day portions
+    static func dayPortion(var times: [TimeName: Double]) -> [TimeName: Double] {
+        for item in times {
+            times[item.0] = times[item.0]! / 24.0
+        }
+        
+        return times
+    }
+    
+    // Compute declination angle of sun and equation of time
+    // Ref: http://aa.usno.navy.mil/faq/docs/SunApprox.php
+    static func sunPosition(jd: Double) -> (declination: Double, equation: Double) {
+        let D = jd - 2451545.0
+        let g = fixAngle(357.529 + 0.98560028 * D)
+        let q = fixAngle(280.459 + 0.98564736 * D)
+        let L = fixAngle(q + 1.915 * sin(g) + 0.020 * sin(2 * g))
+        let e = 23.439 - 0.00000036 * D
+        
+        let RA = arctan2(cos(e) * sin(L), cos(L)) / 15.0
+        let eqt = q / 15.0 - fixHour(RA)
+        let decl = arcsin(sin(e) * sin(L))
+        
+        return (declination: decl, equation: eqt)
+    }
+    
+    // Convert Gregorian date to Julian day
+    // Ref: Astronomical Algorithms by Jean Meeus
+    static func getJulian(date: NSDate) -> Double {
+        let flags: NSCalendarUnit = [.Day, .Month, .Year]
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
+        
+        if components.month <= 2 {
+            components.year -= 1
+            components.month += 12
+        }
+        
+        let A = floor(Double(components.year) / Double(100));
+        let B = 2 - A + floor(A / Double(4));
+        let C = floor(Double(365.25) * Double(components.year + 4716))
+        let D = floor(Double(30.6001) * Double(components.month + 1))
+        let E = Double(components.day) + B - 1524.5
+        
+        let JD = C + D + E
+        
+        return JD
+    }
+    
+    //----------------- Degree-Based Math Functions -------------------
+    
+    static func dtr(d: Double) -> Double { return (d * M_PI) / 180.0 }
+    static func rtd(r: Double) -> Double { return (r * 180.0) / M_PI }
+    
+    static func sin(d: Double) -> Double { return Darwin.sin(dtr(d)) }
+    static func cos(d: Double) -> Double { return Darwin.cos(dtr(d)) }
+    static func tan(d: Double) -> Double { return Darwin.tan(dtr(d)) }
+    
+    static func arcsin(d: Double) -> Double { return rtd(Darwin.asin(d)) }
+    static func arccos(d: Double) -> Double { return rtd(Darwin.acos(d)) }
+    static func arctan(d: Double) -> Double { return rtd(Darwin.atan(d)) }
+    
+    static func arccot(x: Double) -> Double { return rtd(Darwin.atan(1 / x)) }
+    static func arctan2(y: Double, _ x: Double) -> Double { return rtd(Darwin.atan2(y, x)) }
+    
+    static func fixAngle(a: Double) -> Double { return fix(a, 360.0) }
+    static func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
+    
+    static func fix(a: Double, _ b: Double) -> Double {
+        let a = a - b * (floor(a / b))
+        return a < 0 ? a + b : a
+    }
+    
+    //---------------------- Misc Static Functions -----------------------
     
     // Compute the difference between two times
-    func timeDiff(time1: Double!, _ time2: Double!) -> Double {
+    static func timeDiff(time1: Double!, _ time2: Double!) -> Double {
         return fixHour(time2 - time1);
     }
     
@@ -952,6 +966,25 @@ public struct PrayTimes {
         let hour = components.hour
         let minutes = components.minute
         return Double(hour) + (Double(minutes) / 60.0)
+    }
+    
+    // Add a leading 0 if necessary
+    static func twoDigitsFormat(num: Int!) -> String {
+        return num < 10 ? "0\(num)" : "\(num)"
+    }
+    
+    static func getTimeComponents(time: Double) -> [Int] {
+        let roundedTime = fixHour(time + 0.5 / 60) // Add 0.5 minutes to round
+        var hours = floor(roundedTime)
+        var minutes = round((roundedTime - hours) * 60.0)
+        
+        // Handle scenario when minutes is rounded to 60
+        if minutes > 59 {
+            hours++
+            minutes = 0
+        }
+        
+        return [Int(hours), Int(minutes)]
     }
     
     public static func getPreviousPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
@@ -976,30 +1009,6 @@ public struct PrayTimes {
         case .Isha: return .Fajr
         default: return .Isha
         }
-    }
-    
-    //----------------- Degree-Based Math Functions -------------------
-    
-    func dtr(d: Double) -> Double { return (d * M_PI) / 180.0 }
-    func rtd(r: Double) -> Double { return (r * 180.0) / M_PI }
-    
-    func sin(d: Double) -> Double { return Darwin.sin(dtr(d)) }
-    func cos(d: Double) -> Double { return Darwin.cos(dtr(d)) }
-    func tan(d: Double) -> Double { return Darwin.tan(dtr(d)) }
-    
-    func arcsin(d: Double) -> Double { return rtd(Darwin.asin(d)) }
-    func arccos(d: Double) -> Double { return rtd(Darwin.acos(d)) }
-    func arctan(d: Double) -> Double { return rtd(Darwin.atan(d)) }
-    
-    func arccot(x: Double) -> Double { return rtd(Darwin.atan(1 / x)) }
-    func arctan2(y: Double, _ x: Double) -> Double { return rtd(Darwin.atan2(y, x)) }
-    
-    func fixAngle(a: Double) -> Double { return fix(a, 360.0) }
-    func fixHour(a: Double) -> Double { return fix(a, 24.0 ) }
-    
-    func fix(a: Double, _ b: Double) -> Double {
-        let a = a - b * (floor(a / b))
-        return a < 0 ? a + b : a
     }
     
 }
