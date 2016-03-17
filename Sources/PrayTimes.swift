@@ -297,11 +297,11 @@ public struct PrayTimes {
     
     public struct PrayerResultSeries {
         public var date: NSDate
-        public var times: [PrayerResult]
+        public var prayers: [PrayerResult]
         
-        public init(date: NSDate, times: [PrayerResult]) {
+        public init(date: NSDate, prayers: [PrayerResult]) {
             self.date = date
-            self.times = times
+            self.prayers = prayers
         }
     }
     
@@ -611,57 +611,91 @@ public struct PrayTimes {
             }
     }
     
-    public mutating func getTimesForRange(
+    public mutating func getTimeSeries(
         coordinates: [Double],
         endDate: NSDate,
-        date: NSDate = NSDate(),
+        startDate: NSDate = NSDate(),
         timeZone: Double? = nil,
         dst: Bool = false,
         dstOffset: Int = 3600,
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        completionHandler: (() -> Void)? = nil,
-        completionPerDate: (date: NSDate, times: [PrayerResult]) -> Void) -> Void {
-            // Initialize variables
-            var startDate = NSCalendar.currentCalendar()
-                .dateByAddingUnit(.Day,
-                    value: -1,
-                    toDate: date,
-                    options: NSCalendarOptions(rawValue: 0)
-                )!
+        completionHandler: (series: [PrayerResultSeries]) -> Void) {
+            var series: [PrayerResultSeries] = []
             
-            // Iterate date range to generate prayer times per day
-            while startDate.compare(endDate) == .OrderedAscending {
-                startDate = NSCalendar.currentCalendar()
-                    .dateByAddingUnit(.Day,
-                        value: 1,
-                        toDate: startDate,
-                        options: NSCalendarOptions(rawValue: 0)
-                    )!
-                
+            getTimeline(coordinates,
+                endDate: endDate,
+                startDate: startDate,
+                timeZone: timeZone,
+                dst: dst,
+                dstOffset: dstOffset,
+                format: format,
+                isLocalCoords: isLocalCoords,
+                onlyEssentials: true,
+                completionPerDate: { date, prayers in
+                    series.append(PrayerResultSeries(date: date, prayers: prayers))
+                }) { _ in completionHandler(series: series) }
+    }
+    
+    public mutating func getTimeline(
+        coordinates: [Double],
+        endDate: NSDate,
+        startDate: NSDate = NSDate(),
+        timeZone: Double? = nil,
+        dst: Bool = false,
+        dstOffset: Int = 3600,
+        format: String? = nil,
+        isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
+        onlyEssentials: Bool = false,
+        completionPerDate: ((date: NSDate, prayers: [PrayerResult]) -> Void)? = nil,
+        completionHandler: (prayers: [PrayerResult]) -> Void) {
+            precondition(startDate.compare(endDate) == .OrderedAscending,
+                "Start date must be before end date!")
+            
+            var startOfEndDate = NSCalendar.currentCalendar().startOfDayForDate(endDate)
+            var allPrayers: [PrayerResult] = []
+            
+            func repeatTask(date: NSDate) {
                 // Retrieve prayer times for day
                 getTimes(coordinates,
-                    date: startDate,
+                    date: date,
                     timeZone: timeZone,
                     dst: dst,
                     dstOffset: dstOffset,
                     format: format,
                     isLocalCoords: isLocalCoords,
                     onlyEssentials: onlyEssentials) { prayers in
-                        // Process callback
-                        completionPerDate(date: startDate, times: prayers)
+                        allPrayers += prayers
                         
-                        // Allow caller to perform action when done
-                        if NSCalendar.currentCalendar().startOfDayForDate(startDate)
-                            .compare(NSCalendar.currentCalendar().startOfDayForDate(endDate)) == .OrderedSame {
-                                // Process callback
-                                if let completion = completionHandler {
-                                    completion()
-                                }
+                        // Process callback per date if applicable
+                        if let completionPerDate = completionPerDate {
+                            completionPerDate(date: date, prayers: prayers)
+                        }
+                        
+                        // Process callback and exit if range complete
+                        if date.compare(startOfEndDate) == .OrderedSame {
+                            // Process callback
+                            completionHandler(prayers: allPrayers.sort {
+                                $0.date.compare($1.date) == .OrderedAscending
+                                }.filter { // Trim results
+                                    return $0.date.compare(startDate) == .OrderedDescending
+                                        && $0.date.compare(endDate) == .OrderedAscending
+                                })
+                            return
+                        } else {
+                            repeatTask(NSCalendar.currentCalendar()
+                                .dateByAddingUnit(.Day,
+                                    value: 1,
+                                    toDate: date,
+                                    options: NSCalendarOptions(rawValue: 0)
+                                )!)
                         }
                 }
             }
+            
+            repeatTask(NSCalendar.currentCalendar()
+                .startOfDayForDate(startDate))
     }
     
     //---------------------- Compute Prayer Times -----------------------

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MonthlyController: UITableViewController {
+class TimelineController: UITableViewController {
     
-    var prayerSeries: [PrayTimes.PrayerResultSeries] = []
+    var prayerTimeline: [PrayTimes.PrayerResult] = []
     
     let method = "ISNA"
     let juristic = "Standard"
@@ -33,42 +33,28 @@ class MonthlyController: UITableViewController {
         )
         
         // Get prayer times for date range and reload table
-        prayTimes.getTimeSeries(coords,
+        prayTimes.getTimeline(coords,
             endDate: endDate,
             startDate: startDate,
             timeZone: timeZone,
             dst: dst,
-            onlyEssentials: true) { series in
-                self.prayerSeries = series
+            onlyEssentials: true) { prayers in
+                self.prayerTimeline = prayers
                 self.tableView.reloadData()
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return prayerSeries.count
+        return prayerTimeline.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
-        let data = prayerSeries[indexPath.row]
-        let formatter = NSDateFormatter()
-        var output = ""
+        let data = prayerTimeline[indexPath.row]
+        let formatter = NSDateFormatter(dateFormat: "MMMM dd, yyyy h:mm a")
         
-        for item in data.prayers {
-            let time = item.formattedTime.componentsSeparatedByString(" ")[0]
-            
-            // Display current and next indicators
-            let status = item.isCurrent ? "c" : item.isNext ? "n" : ""
-            
-            // Place date of prayer next to time
-            formatter.dateFormat = "dd"
-            output += "\(time)-\(formatter.stringFromDate(item.date))\(status), "
-        }
-        
-        formatter.dateFormat = "MMMM dd, yyyy h:mm a"
-        cell.textLabel?.text = formatter.stringFromDate(data.date)
-        
-        cell.detailTextLabel?.text = output
+        cell.textLabel?.text = data.name
+        cell.detailTextLabel?.text = formatter.stringFromDate(data.date)
         
         return cell
     }
