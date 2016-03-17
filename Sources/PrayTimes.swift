@@ -488,7 +488,7 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        completionHandler: (prayers: [PrayerResult]) -> Void) {
+        handler: (prayers: [PrayerResult]) -> Void) {
             lat = coordinates[0]
             lng = coordinates[1]
             elv = coordinates.count > 2 ? coordinates[2] : 0
@@ -560,7 +560,7 @@ public struct PrayTimes {
                 }
                 
                 // Process callback
-                completionHandler(prayers: onlyEssentials
+                handler(prayers: onlyEssentials
                     ? result.filter { $0.isFard || $0.type == .Sunrise }
                     : result)
             }
