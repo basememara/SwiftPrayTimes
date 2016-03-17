@@ -621,7 +621,7 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        completionHandler: (series: [PrayerResultSeries]) -> Void) {
+        handler: (series: [PrayerResultSeries]) -> Void) {
             var series: [PrayerResultSeries] = []
             
             getTimeline(coordinates,
@@ -633,9 +633,9 @@ public struct PrayTimes {
                 format: format,
                 isLocalCoords: isLocalCoords,
                 onlyEssentials: true,
-                completionPerDate: { date, prayers in
+                handlerPerDate: { date, prayers in
                     series.append(PrayerResultSeries(date: date, prayers: prayers))
-                }) { _ in completionHandler(series: series) }
+                }) { _ in handler(series: series) }
     }
     
     public mutating func getTimeline(
@@ -648,8 +648,8 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        completionPerDate: ((date: NSDate, prayers: [PrayerResult]) -> Void)? = nil,
-        completionHandler: (prayers: [PrayerResult]) -> Void) {
+        handlerPerDate: ((date: NSDate, prayers: [PrayerResult]) -> Void)? = nil,
+        handler: (prayers: [PrayerResult]) -> Void) {
             precondition(startDate.compare(endDate) == .OrderedAscending,
                 "Start date must be before end date!")
             
@@ -669,14 +669,14 @@ public struct PrayTimes {
                         allPrayers += prayers
                         
                         // Process callback per date if applicable
-                        if let completionPerDate = completionPerDate {
-                            completionPerDate(date: date, prayers: prayers)
+                        if let handlerPerDate = handlerPerDate {
+                            handlerPerDate(date: date, prayers: prayers)
                         }
                         
                         // Process callback and exit if range complete
                         if date.compare(startOfEndDate) == .OrderedSame {
                             // Process callback
-                            completionHandler(prayers: allPrayers.sort {
+                            handler(prayers: allPrayers.sort {
                                 $0.date.compare($1.date) == .OrderedAscending
                                 }.filter { // Trim results
                                     return $0.date.compare(startDate) == .OrderedDescending
