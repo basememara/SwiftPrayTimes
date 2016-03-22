@@ -542,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -549,6 +550,7 @@
 		8BE19ABD1C72D58700D4D437 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 			};
 			name = Release;
 		};
