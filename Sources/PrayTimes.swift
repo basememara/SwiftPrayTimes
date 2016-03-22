@@ -269,9 +269,9 @@ public struct PrayTimes {
         }
         
         // Convert float time to the given format (see timeFormats)
-        public func getFormattedTime(var format: String? = nil, var suffixes: [String]? = nil) -> String {
-            format = format ?? timeFormat
-            suffixes = suffixes ?? timeSuffixes
+        public func getFormattedTime(format: String? = nil, suffixes: [String]? = nil) -> String {
+            let format = format ?? timeFormat
+            var suffixes = suffixes ?? timeSuffixes
             
             if time == 0 {
                 return invalidTime
@@ -285,7 +285,7 @@ public struct PrayTimes {
             let hours = timeComponents[0]
             let minutes = timeComponents[1]
             
-            let suffix = format == "12h" && suffixes!.count > 0 ? (hours < 12 ? suffixes![0] : suffixes![1]) : ""
+            let suffix = format == "12h" && suffixes.count > 0 ? (hours < 12 ? suffixes[0] : suffixes[1]) : ""
             let hour = format == "24h" ? PrayTimes.twoDigitsFormat(hours) : "\(Int((hours + 12 - 1) % 12 + 1))"
             
             let output = hour + ":" + PrayTimes.twoDigitsFormat(minutes)
@@ -571,7 +571,7 @@ public struct PrayTimes {
                 
                 // Factor in daylight if applicable
                 if dst {
-                    self.timeZone++
+                    self.timeZone += 1
                 }
                 
                 deferredTask()
@@ -719,8 +719,8 @@ public struct PrayTimes {
     }
     
     // Compute prayer times at given julian date
-    func computePrayerTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
-        times = PrayTimes.dayPortion(times)
+    func computePrayerTimes(times: [TimeName: Double]) -> [TimeName: Double] {
+        var times = PrayTimes.dayPortion(times)
         
         let imsak = sunAngleTime(getSettingValue(.Imsak),
             time: times[.Imsak],
@@ -789,7 +789,9 @@ public struct PrayTimes {
     }
     
     // Adjust times
-    func adjustTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func adjustTimes(times: [TimeName: Double]) -> [TimeName: Double] {
+        var times = times
+        
         for item in times {
             times[item.0] = times[item.0]!
                 + (Double(timeZone) - lng / 15)
@@ -824,7 +826,9 @@ public struct PrayTimes {
     }
     
     // Adjust times for locations in higher latitudes
-    func adjustHighLats(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func adjustHighLats(times: [TimeName: Double]) -> [TimeName: Double] {
+        var times = times
+        
         let nightTime = PrayTimes.timeDiff(times[.Sunset], times[.Sunrise])
         
         times[.Imsak] = adjustHLTime(times[.Imsak],
@@ -853,7 +857,9 @@ public struct PrayTimes {
     }
     
     // Adjust times for locations in higher latitudes
-    func adjustHLTime(var time: Double!, base: Double!, angle: Double!, night: Double!, direction: String? = nil) -> Double {
+    func adjustHLTime(time: Double!, base: Double!, angle: Double!, night: Double!, direction: String? = nil) -> Double {
+        var time = time
+        
         let portion = nightPortion(angle, night)
         
         let diff = direction == "ccw"
@@ -883,7 +889,9 @@ public struct PrayTimes {
     }
     
     // Apply offsets to the times
-    func tuneTimes(var times: [TimeName: Double]) -> [TimeName: Double] {
+    func tuneTimes(times: [TimeName: Double]) -> [TimeName: Double] {
+        var times = times
+        
         for item in times {
             times[item.0] = times[item.0]! + offset[item.0]! / 60.0
         }
@@ -916,7 +924,9 @@ public struct PrayTimes {
     //---------------------- Static Functions -----------------------
     
     // Convert hours to day portions
-    static func dayPortion(var times: [TimeName: Double]) -> [TimeName: Double] {
+    static func dayPortion(times: [TimeName: Double]) -> [TimeName: Double] {
+        var times = times
+        
         for item in times {
             times[item.0] = times[item.0]! / 24.0
         }
@@ -1014,7 +1024,7 @@ public struct PrayTimes {
         
         // Handle scenario when minutes is rounded to 60
         if minutes > 59 {
-            hours++
+            hours += 1
             minutes = 0
         }
         
