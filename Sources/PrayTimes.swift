@@ -112,9 +112,7 @@ public struct PrayTimes {
     }
     
     public enum AdjustmentMethod: String {
-        case Standard = "Standard"
-        case Hanafi = "Hanafi"
-        case Jafari = "Jafari"
+        case Standard, Hanafi, Jafari
     }
     
     public enum ElavationMethod {
@@ -913,7 +911,7 @@ public struct PrayTimes {
         if asrParam.type == .Method {
             let method = asrParam.value as! AdjustmentMethod
             
-            return method == .Standard ? 1
+            return method == .Standard || method == .Jafari ? 1
                 : method == .Hanafi ? 2
                 : getSettingValue(asrParam.time)
         }
