@@ -559,8 +559,8 @@ public struct PrayTimes {
                 
                 // Process callback
                 handler(prayers: onlyEssentials
-                    ? result.filter { $0.isFard || $0.type == .Sunrise }
-                    : result)
+                    ? result.filter { ($0.isFard || $0.type == .Sunrise) && $0.type != .Sunset }
+                    : result.filter { $0.type != .Sunset })
             }
             
             // Calculate timezone
