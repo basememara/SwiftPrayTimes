@@ -630,7 +630,7 @@ public struct PrayTimes {
                 dstOffset: dstOffset,
                 format: format,
                 isLocalCoords: isLocalCoords,
-                onlyEssentials: true,
+                onlyEssentials: onlyEssentials,
                 handlerPerDate: { date, prayers in
                     series.append(PrayerResultSeries(date: date, prayers: prayers))
                 }) { _ in handler(series: series) }
@@ -1031,24 +1031,28 @@ public struct PrayTimes {
     
     public static func getPreviousPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
         switch time {
+        case .Imsak: return .Isha
         case .Fajr: return .Isha
         case .Sunrise: return .Fajr
         case .Dhuhr: return .Sunrise
         case .Asr: return .Dhuhr
         case .Maghrib: return .Asr
         case .Isha: return .Maghrib
+        case .Midnight: return .Isha
         default: return .Fajr
         }
     }
     
     public static func getNextPrayer(time: PrayTimes.TimeName) -> PrayTimes.TimeName {
         switch time {
+        case .Imsak: return .Fajr
         case .Fajr: return .Sunrise
         case .Sunrise: return .Dhuhr
         case .Dhuhr: return .Asr
         case .Asr: return .Maghrib
         case .Maghrib: return .Isha
         case .Isha: return .Fajr
+        case .Midnight: return .Fajr
         default: return .Isha
         }
     }

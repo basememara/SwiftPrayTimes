@@ -38,7 +38,7 @@ class TimelineController: UITableViewController {
             startDate: startDate,
             timeZone: timeZone,
             dst: dst,
-            onlyEssentials: true) { prayers in
+            onlyEssentials: false) { prayers in
                 self.prayerTimeline = prayers
                 self.tableView.reloadData()
         }
