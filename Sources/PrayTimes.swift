@@ -237,6 +237,8 @@ public struct PrayTimes {
                 
                 // Handle specific prayers
                 switch (type) {
+                case .Imsak:
+                    self.abbr = "IMK"
                 case .Fajr:
                     self.abbr = "FJR"
                     self.isFard = true
@@ -262,6 +264,8 @@ public struct PrayTimes {
                 case .Isha:
                     self.abbr = "ISH"
                     self.isFard = true
+                case .Midnight:
+                    self.abbr = "MID"
                 default: break
                 }
         }
