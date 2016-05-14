@@ -426,6 +426,25 @@ public struct PrayTimes {
         }
     }
     
+    public init(method: PrayerMethod, juristic: AdjustmentMethod? = nil) {
+        // Reset settings
+        settings = PrayTimes.defaultSettings
+        
+        // Get prayer method for adjustments
+        calcMethod = method.description
+        adjust(method.params)
+        
+        // Update juristic method if applicable
+        if let j = juristic {
+            //for item in settings {
+            for (index, item) in settings.enumerate() {
+                if item.type == .Method {
+                    settings[index].value = j
+                }
+            }
+        }
+    }
+    
     //-------------------- Interface Functions --------------------
     
     public mutating func setMethod(method: String) {
