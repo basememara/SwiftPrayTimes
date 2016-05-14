@@ -26,9 +26,14 @@ class TimelineController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let customMethod = PrayTimes.PrayerMethod("Custom", [
+            PrayTimes.AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
+            PrayTimes.AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
+        ])
+        
         // Create instance
         var prayTimes = PrayTimes(
-            method: method,
+            method: customMethod,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
         

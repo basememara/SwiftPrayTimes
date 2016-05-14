@@ -20,15 +20,20 @@ class MonthlyController: UITableViewController {
     //let timeZone = -8.0 // Los Angeles
     let dst = true
     
-    let startDate = NSDate(fromString: "2016/03/16 14:00")!
-    let endDate = NSDate(fromString: "2016/04/16 14:00")!
+    let startDate = NSDate(fromString: "2016/05/15 14:00")!
+    let endDate = NSDate(fromString: "2016/06/15 14:00")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let customMethod = PrayTimes.PrayerMethod("Custom", [
+            PrayTimes.AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
+            PrayTimes.AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
+        ])
+        
         // Create instance
         var prayTimes = PrayTimes(
-            method: method,
+            method: customMethod,
             juristic: PrayTimes.AdjustmentMethod(rawValue: juristic)
         )
         
