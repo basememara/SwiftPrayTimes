@@ -137,7 +137,7 @@ public struct PrayTimes {
         var description: String
         var params = [AdjustmentParam]()
         
-        init(_ description: String, _ params: [AdjustmentParam]) {
+        public init(_ description: String, _ params: [AdjustmentParam]) {
             self.description = description
             self.params = params
             
