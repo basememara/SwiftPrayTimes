@@ -351,7 +351,7 @@ public struct PrayTimes {
             AdjustmentParam(time: .Isha, type: .Degree, value: 14.0),
             AdjustmentParam(time: .Midnight, type: .Method, value: AdjustmentMethod.Jafari)
             ]),
-        "UOIF": PrayerMethod("Union of Islamic Organizations of France", [
+        "UIOF": PrayerMethod("Union of Islamic Organizations of France", [
             AdjustmentParam(time: .Fajr, type: .Degree, value: 12.0),
             AdjustmentParam(time: .Isha, type: .Degree, value: 12.0)
             ])
