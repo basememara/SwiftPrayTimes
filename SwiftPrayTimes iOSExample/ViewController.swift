@@ -26,7 +26,8 @@ class ViewController: UITableViewController {
         let customMethod = PrayTimes.PrayerMethod("Custom", [
             PrayTimes.AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
             PrayTimes.AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
-        ])
+        ],
+        elavation: PrayTimes.ElavationMethod(rawValue: "NightMiddle"))
         
         // Create instance
         var prayTimes = PrayTimes(

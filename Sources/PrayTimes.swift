@@ -115,7 +115,7 @@ public struct PrayTimes {
         case Standard, Hanafi, Jafari
     }
     
-    public enum ElavationMethod {
+    public enum ElavationMethod: String {
         case None, NightMiddle, OneSeventh, AngleBased
     }
     
@@ -136,10 +136,12 @@ public struct PrayTimes {
     public struct PrayerMethod {
         var description: String
         var params = [AdjustmentParam]()
+        var elavation: ElavationMethod?
         
-        public init(_ description: String, _ params: [AdjustmentParam]) {
+        public init(_ description: String, _ params: [AdjustmentParam], elavation: ElavationMethod? = nil) {
             self.description = description
             self.params = params
+            self.elavation = elavation
             
             // Add default params if applicable
             for item in PrayTimes.defaultParams {
@@ -439,6 +441,10 @@ public struct PrayTimes {
         // Get prayer method for adjustments
         calcMethod = method.description
         adjust(method.params)
+        
+        if let elavation = method.elavation {
+            highLats = elavation
+        }
         
         // Update juristic method if applicable
         if let j = juristic {
