@@ -123,8 +123,14 @@ public struct PrayTimes {
     
     public struct AdjustmentParam {
         var time: TimeName
-        var type = AdjustmentType.Degree
+        var type: AdjustmentType
         var value: Any?
+        
+        public init(time: TimeName, type: AdjustmentType, value: Any?) {
+            self.time = time
+            self.type = type
+            self.value = value
+        }
     }
     
     public struct PrayerMethod {
