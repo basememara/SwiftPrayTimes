@@ -21,11 +21,18 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+####CocoaPods
 SwiftPrayTimes is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+```
 pod "SwiftPrayTimes"
+```
+
+####Carthage
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftPrayTimes` by adding it to your `Cartfile`:
+```
+github "ZamzamInc/SwiftPrayTimes"
 ```
 
 ## Author
