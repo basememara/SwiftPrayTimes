@@ -10,20 +10,18 @@ import Foundation
 
 // Helpers for testing
 
-extension NSDate {
+extension Date {
     
-    convenience init?(fromString: String, dateFormat: String = "yyyy/MM/dd HH:mm") {
-        guard let date = NSDateFormatter(dateFormat: dateFormat).dateFromString(fromString)
-            where !fromString.isEmpty else {
-                return nil
-        }
+    init?(fromString: String, dateFormat: String = "yyyy/MM/dd HH:mm") {
+        guard let date = DateFormatter(dateFormat: dateFormat).date(from: fromString), !fromString.isEmpty
+            else { return nil }
         
-        self.init(timeInterval: 0, sinceDate: date)
+        self.init(timeInterval: 0, since: date)
     }
 
 }
 
-extension NSDateFormatter {
+extension DateFormatter {
     
     convenience init(dateFormat: String) {
         self.init()

@@ -21,7 +21,7 @@ class Tests: XCTestCase {
     }
     
     func testGetTimeName() {
-        let value = PrayTimes.TimeName.Fajr
+        let value = PrayTimes.TimeName.fajr
         let expectedValue = "Fajr"
         
         XCTAssertEqual(value.getName(), expectedValue,

@@ -20,15 +20,15 @@ class MonthlyController: UITableViewController {
     //let timeZone = -8.0 // Los Angeles
     let dst = true
     
-    let startDate = NSDate(fromString: "2016/05/15 14:00")!
-    let endDate = NSDate(fromString: "2016/06/15 14:00")!
+    let startDate = Date(fromString: "2016/05/15 14:00")!
+    let endDate = Date(fromString: "2016/06/15 14:00")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let customMethod = PrayTimes.PrayerMethod("Custom", [
-            PrayTimes.AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
-            PrayTimes.AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
+            PrayTimes.AdjustmentParam(time: .fajr, type: .degree, value: 15.0),
+            PrayTimes.AdjustmentParam(time: .isha, type: .degree, value: 15.0)
         ])
         
         // Create instance
@@ -38,7 +38,7 @@ class MonthlyController: UITableViewController {
         )
         
         // Get prayer times for date range and reload table
-        prayTimes.getTimeSeries(coords,
+        prayTimes.getTimeSeries(for: coords,
             endDate: endDate,
             startDate: startDate,
             timeZone: timeZone,
@@ -49,29 +49,29 @@ class MonthlyController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return prayerSeries.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         let data = prayerSeries[indexPath.row]
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         var output = ""
         
         for item in data.prayers {
-            let time = item.formattedTime.componentsSeparatedByString(" ")[0]
+            let time = item.formattedTime.components(separatedBy: " ")[0]
             
             // Display current and next indicators
             let status = item.isCurrent ? "c" : item.isNext ? "n" : ""
             
             // Place date of prayer next to time
             formatter.dateFormat = "dd"
-            output += "\(time)-\(formatter.stringFromDate(item.date))\(status), "
+            output += "\(time)-\(formatter.string(from: item.date))\(status), "
         }
         
         formatter.dateFormat = "MMMM dd, yyyy h:mm a"
-        cell.textLabel?.text = formatter.stringFromDate(data.date)
+        cell.textLabel?.text = formatter.string(from: data.date)
         
         cell.detailTextLabel?.text = output
         

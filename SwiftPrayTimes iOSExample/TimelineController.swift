@@ -20,15 +20,15 @@ class TimelineController: UITableViewController {
     //let timeZone = -8.0 // Los Angeles
     let dst = true
     
-    let startDate = NSDate(fromString: "2016/03/16 14:00")!
-    let endDate = NSDate(fromString: "2016/04/16 14:00")!
+    let startDate = Date(fromString: "2016/03/16 14:00")!
+    let endDate = Date(fromString: "2016/04/16 14:00")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let customMethod = PrayTimes.PrayerMethod("Custom", [
-            PrayTimes.AdjustmentParam(time: .Fajr, type: .Degree, value: 15.0),
-            PrayTimes.AdjustmentParam(time: .Isha, type: .Degree, value: 15.0)
+            PrayTimes.AdjustmentParam(time: .fajr, type: .degree, value: 15.0),
+            PrayTimes.AdjustmentParam(time: .isha, type: .degree, value: 15.0)
         ])
         
         // Create instance
@@ -38,7 +38,7 @@ class TimelineController: UITableViewController {
         )
         
         // Get prayer times for date range and reload table
-        prayTimes.getTimeline(coords,
+        prayTimes.getTimeline(for: coords,
             endDate: endDate,
             startDate: startDate,
             timeZone: timeZone,
@@ -49,17 +49,17 @@ class TimelineController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return prayerTimeline.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "Cell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         let data = prayerTimeline[indexPath.row]
-        let formatter = NSDateFormatter(dateFormat: "MMMM dd, yyyy h:mm a")
+        let formatter = DateFormatter(dateFormat: "MMMM dd, yyyy h:mm a")
         
         cell.textLabel?.text = data.name
-        cell.detailTextLabel?.text = formatter.stringFromDate(data.date)
+        cell.detailTextLabel?.text = formatter.string(from: data.date)
         
         return cell
     }
