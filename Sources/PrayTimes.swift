@@ -521,7 +521,7 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        handler: (prayers: [PrayerResult]) -> Void) {
+        handler: ([PrayerResult]) -> Void) {
             lat = coordinates[0]
             lng = coordinates[1]
             elv = coordinates.count > 2 ? coordinates[2] : 0
@@ -593,7 +593,7 @@ public struct PrayTimes {
                 }
                 
                 // Process callback
-                handler(prayers: onlyEssentials
+                handler(onlyEssentials
                     ? result.filter { ($0.isFard || $0.type == .Sunrise) && $0.type != .Sunset }
                     : result.filter { $0.type != .Sunset })
             }
@@ -654,7 +654,7 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        handler: (series: [PrayerResultSeries]) -> Void) {
+        handler: ([PrayerResultSeries]) -> Void) {
             var series: [PrayerResultSeries] = []
             
             getTimeline(coordinates,
@@ -668,7 +668,7 @@ public struct PrayTimes {
                 onlyEssentials: onlyEssentials,
                 handlerPerDate: { date, prayers in
                     series.append(PrayerResultSeries(date: date, prayers: prayers))
-                }) { _ in handler(series: series) }
+                }) { _ in handler(series) }
     }
     
     public mutating func getTimeline(
@@ -681,8 +681,8 @@ public struct PrayTimes {
         format: String? = nil,
         isLocalCoords: Bool = true, // Should set to false if coordinate in parameter not device
         onlyEssentials: Bool = false,
-        handlerPerDate: ((date: NSDate, prayers: [PrayerResult]) -> Void)? = nil,
-        handler: (prayers: [PrayerResult]) -> Void) {
+        handlerPerDate: ((NSDate, [PrayerResult]) -> Void)? = nil,
+        handler: ([PrayerResult]) -> Void) {
             precondition(startDate.compare(endDate) == .OrderedAscending,
                 "Start date must be before end date!")
             
@@ -703,13 +703,13 @@ public struct PrayTimes {
                         
                         // Process callback per date if applicable
                         if let handlerPerDate = handlerPerDate {
-                            handlerPerDate(date: date, prayers: prayers)
+                            handlerPerDate(date, prayers)
                         }
                         
                         // Process callback and exit if range complete
                         if date.compare(startOfEndDate) == .OrderedSame {
                             // Process callback
-                            handler(prayers: allPrayers.sort {
+                            handler(allPrayers.sort {
                                 $0.date.compare($1.date) == .OrderedAscending
                                 }.filter { // Trim results
                                     return $0.date.compare(startDate) == .OrderedDescending
