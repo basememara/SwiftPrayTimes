@@ -1,9 +1,11 @@
 # SwiftPrayTimes
 
-[![CI Status](http://img.shields.io/travis/Basem Emara/SwiftPrayTimes.svg?style=flat)](https://travis-ci.org/Basem Emara/SwiftPrayTimes)
 [![Version](https://img.shields.io/cocoapods/v/SwiftPrayTimes.svg?style=flat)](http://cocoapods.org/pods/SwiftPrayTimes)
 [![License](https://img.shields.io/cocoapods/l/SwiftPrayTimes.svg?style=flat)](http://cocoapods.org/pods/SwiftPrayTimes)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftPrayTimes.svg?style=flat)](http://cocoapods.org/pods/SwiftPrayTimes)
+
+Development on SwiftPrayTimes has been discontinued in favor of contributing to the new prayer time project [Adhan](https://github.com/batoulapps/Adhan).
+--
 
 Pray Times provides a set of handy functions to calculate prayer times for any location around the world, 
 based on a variety of calculation methods currently used in Muslim communities.
@@ -21,7 +23,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-####CocoaPods
+#### CocoaPods
 SwiftPrayTimes is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -29,7 +31,7 @@ it, simply add the following line to your Podfile:
 pod "SwiftPrayTimes"
 ```
 
-####Carthage
+#### Carthage
 You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftPrayTimes` by adding it to your `Cartfile`:
 ```
 github "ZamzamInc/SwiftPrayTimes"
